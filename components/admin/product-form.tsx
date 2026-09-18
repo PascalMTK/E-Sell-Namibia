@@ -8,7 +8,7 @@ import { Input, Textarea, Select, Label, FieldError, Checkbox, HelpText } from "
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PhotoUploader } from "@/components/sell/photo-uploader";
-import { PRODUCT_CONDITIONS, STOCK_STATUSES, NAMIBIAN_LOCATIONS } from "@/lib/constants";
+import { PRODUCT_CONDITIONS, STOCK_STATUSES } from "@/lib/constants";
 import { calculateDiscountPercent, formatNad } from "@/lib/utils/currency";
 import { productFormSchema, ProductFormValues } from "@/lib/validation/product";
 import { useToast } from "@/components/ui/toast";
@@ -57,6 +57,7 @@ export function ProductForm({
       sold: false,
       images: [],
       ...defaultValues,
+      location: "Windhoek",
     },
   });
 
@@ -193,14 +194,7 @@ export function ProductForm({
             </div>
             <div>
               <Label htmlFor="location">Location *</Label>
-              <Select id="location" {...register("location")}>
-                <option value="">Select location</option>
-                {NAMIBIAN_LOCATIONS.map((loc) => (
-                  <option key={loc} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </Select>
+              <Input id="location" {...register("location")} readOnly className="bg-off-white" />
               <FieldError message={errors.location?.message} />
             </div>
           </div>

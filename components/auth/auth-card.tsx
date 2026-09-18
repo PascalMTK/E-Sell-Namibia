@@ -55,7 +55,7 @@ export function AuthCard({
                 <span className="mb-5 block h-1 w-14 bg-brand-yellow" />
                 <p className="max-w-sm text-3xl font-extrabold leading-tight tracking-tight lg:text-4xl">Good finds start here.</p>
                 <p className="mt-3 max-w-sm text-sm leading-6 text-white/80">Explore quality goods across Namibia and keep your selling journey in one place.</p>
-                <p className="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-brand-yellow">Windhoek · Nationwide</p>
+                <p className="mt-8 text-xs font-bold uppercase tracking-[0.18em] text-brand-yellow">Based in Windhoek · Nationwide delivery</p>
               </div>
             </div>
           </div>

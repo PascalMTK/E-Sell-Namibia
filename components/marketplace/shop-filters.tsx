@@ -4,7 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Select } from "@/components/ui/form-field";
 import { Button } from "@/components/ui/button";
-import { NAMIBIAN_LOCATIONS, PRODUCT_CONDITIONS, SORT_OPTIONS } from "@/lib/constants";
+import { PRODUCT_CONDITIONS, SORT_OPTIONS } from "@/lib/constants";
 
 interface CategoryOption {
   slug: string;
@@ -86,19 +86,6 @@ export function ShopFilters({ categories }: { categories: CategoryOption[] }) {
           {PRODUCT_CONDITIONS.map((c) => (
             <option key={c.value} value={c.value}>
               {c.label}
-            </option>
-          ))}
-        </Select>
-
-        <Select
-          defaultValue={searchParams.get("location") ?? ""}
-          onChange={(e) => updateParam("location", e.target.value)}
-          aria-label="Filter by location"
-        >
-          <option value="">Any location</option>
-          {NAMIBIAN_LOCATIONS.map((loc) => (
-            <option key={loc} value={loc}>
-              {loc}
             </option>
           ))}
         </Select>

@@ -35,7 +35,7 @@ export default async function ConvertSellRequestPage({ params }: { params: Promi
           brand: sellRequest.brand ?? "",
           model: sellRequest.model ?? "",
           condition: sellRequest.condition,
-          location: sellRequest.location,
+          location: "Windhoek",
           price: sellRequest.expectedPrice ? Number(sellRequest.expectedPrice) : undefined,
           negotiable: sellRequest.negotiable,
           images: sellRequest.photos.map((photo, index) => ({

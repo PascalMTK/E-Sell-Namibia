@@ -1,14 +1,3 @@
-export const NAMIBIAN_LOCATIONS = [
-  "Windhoek",
-  "Swakopmund",
-  "Walvis Bay",
-  "Oshakati",
-  "Rundu",
-  "Katima Mulilo",
-  "Otjiwarongo",
-  "Other",
-] as const;
-
 export const PRODUCT_CONDITIONS = [
   { value: "NEW", label: "New" },
   { value: "LIKE_NEW", label: "Like New" },

@@ -7,7 +7,7 @@ import { CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { Input, Textarea, Select, Label, FieldError, Checkbox, HelpText } from "@/components/ui/form-field";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { PhotoUploader, UploadedImage } from "@/components/sell/photo-uploader";
-import { NAMIBIAN_LOCATIONS, PRODUCT_CONDITIONS, PREFERRED_CONTACT_METHODS } from "@/lib/constants";
+import { PRODUCT_CONDITIONS, PREFERRED_CONTACT_METHODS } from "@/lib/constants";
 import { formatNad } from "@/lib/utils/currency";
 import { sellRequestFullSchema, SellRequestFormValues } from "@/lib/validation/sell-request";
 import { createSellRequestAction } from "@/app/actions/sell-requests";
@@ -40,6 +40,7 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
       preferredContactMethod: "WHATSAPP",
       negotiable: true,
       images: [],
+      location: "Windhoek",
     },
   });
 
@@ -205,14 +206,8 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
             </label>
             <div>
               <Label htmlFor="location">Location *</Label>
-              <Select id="location" {...register("location")}>
-                <option value="">Select location</option>
-                {NAMIBIAN_LOCATIONS.map((loc) => (
-                  <option key={loc} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </Select>
+              <Input id="location" {...register("location")} readOnly className="bg-off-white" />
+              <HelpText>ESell currently accepts items located in Windhoek.</HelpText>
               <FieldError message={errors.location?.message} />
             </div>
           </div>

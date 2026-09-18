@@ -34,7 +34,7 @@ export const productFormSchema = z.object({
 
   condition: productConditionEnum,
 
-  location: z.string().min(2, "Location is required"),
+  location: z.string().refine((value) => value === "Windhoek", "Products must be located in Windhoek"),
 
   pickupAvailable: z.boolean().default(true),
   windhoekDelivery: z.boolean().default(false),

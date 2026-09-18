@@ -99,7 +99,7 @@ async function main() {
       condition: "USED" as const,
       brand: "Toyota",
       model: "Corolla",
-      location: "Swakopmund",
+      location: "Windhoek",
       description: "Reliable Toyota Corolla, full service history, ready to drive.",
       image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80",
       newArrival: true,
@@ -122,7 +122,7 @@ async function main() {
       category: "Furniture",
       price: 7500,
       condition: "GOOD" as const,
-      location: "Walvis Bay",
+      location: "Windhoek",
       description: "Comfortable L-shaped sofa, fabric upholstery, no tears or stains.",
       image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
     },
@@ -131,7 +131,7 @@ async function main() {
       category: "Furniture",
       price: 4200,
       condition: "USED" as const,
-      location: "Oshakati",
+      location: "Windhoek",
       description: "6-seater dining table set, solid wood, minor surface scratches.",
       image: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80",
       newArrival: true,
@@ -151,7 +151,7 @@ async function main() {
       category: "Home & Garden",
       price: 1800,
       condition: "LIKE_NEW" as const,
-      location: "Walvis Bay",
+      location: "Windhoek",
       description: "Modern accent lounge chair, barely used, smoke-free home.",
       image: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80",
       newArrival: true,
@@ -160,7 +160,12 @@ async function main() {
 
   for (const def of productDefs) {
     const existing = await prisma.product.findUnique({ where: { slug: slug(def.name) } });
-    if (existing) continue;
+    if (existing) {
+      if (existing.createdById === admin.id && existing.location !== "Windhoek") {
+        await prisma.product.update({ where: { id: existing.id }, data: { location: "Windhoek" } });
+      }
+      continue;
+    }
 
     await prisma.product.create({
       data: {

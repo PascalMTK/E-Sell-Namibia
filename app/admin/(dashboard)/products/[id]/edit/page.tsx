@@ -42,7 +42,7 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
           originalPrice: product.originalPrice ? Number(product.originalPrice) : undefined,
           negotiable: product.negotiable,
           condition: product.condition,
-          location: product.location,
+          location: "Windhoek",
           pickupAvailable: product.pickupAvailable,
           windhoekDelivery: product.windhoekDelivery,
           nationwideDelivery: product.nationwideDelivery,

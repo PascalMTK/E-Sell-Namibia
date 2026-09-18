@@ -23,7 +23,7 @@ export const sellRequestProductSchema = z.object({
 export const sellRequestPricingSchema = z.object({
   expectedPrice: z.coerce.number().positive().optional().nullable(),
   negotiable: z.boolean().default(true),
-  location: z.string().min(2, "Location is required"),
+  location: z.string().refine((value) => value === "Windhoek", "Items must be located in Windhoek"),
 });
 
 export const sellRequestPhotosSchema = z.object({
