@@ -20,11 +20,11 @@ function ThreadsIcon({ size = 16 }: { size?: number }) {
 }
 
 const SOCIAL_ICONS = [
-  { href: SOCIAL_LINKS.facebook, label: "Visit E-Sell Namibia on Facebook", icon: <Facebook size={16} /> },
-  { href: SOCIAL_LINKS.instagram, label: "Visit E-Sell Namibia on Instagram", icon: <Instagram size={16} /> },
-  { href: SOCIAL_LINKS.tiktok, label: "Visit E-Sell Namibia on TikTok", icon: <TikTokIcon /> },
-  { href: SOCIAL_LINKS.linkedin, label: "Visit E-Sell Namibia on LinkedIn", icon: <Linkedin size={16} /> },
-  { href: SOCIAL_LINKS.threads, label: "Visit E-Sell Namibia on Threads", icon: <ThreadsIcon /> },
+  { href: SOCIAL_LINKS.facebook, label: "Visit ESell Namibia on Facebook", icon: <Facebook size={16} /> },
+  { href: SOCIAL_LINKS.instagram, label: "Visit ESell Namibia on Instagram", icon: <Instagram size={16} /> },
+  { href: SOCIAL_LINKS.tiktok, label: "Visit ESell Namibia on TikTok", icon: <TikTokIcon /> },
+  { href: SOCIAL_LINKS.linkedin, label: "Visit ESell Namibia on LinkedIn", icon: <Linkedin size={16} /> },
+  { href: SOCIAL_LINKS.threads, label: "Visit ESell Namibia on Threads", icon: <ThreadsIcon /> },
 ];
 
 const columns = [
@@ -67,19 +67,19 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2.5">
               <span className="flex h-10 items-center rounded-lg bg-white px-2.5 py-1.5">
-                <Image src="/logo.png" alt="E-Sell" width={474} height={193} className="h-6 w-auto" />
+                <Image src="/logo.png" alt="ESell" width={474} height={193} className="h-6 w-auto" />
               </span>
               <span className="text-lg font-extrabold uppercase tracking-widest">Namibia</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-gray-400">
               Buying & Selling made easier for everyone. Buy new and second-hand goods, or sell your unwanted
-              items through E-Sell Namibia.
+              items through ESell Namibia.
             </p>
             <p className="mt-3 text-xs font-semibold text-gray-500">Windhoek, Namibia · Nationwide Delivery</p>
 
             <div className="mt-6">
               <p className="mb-3 text-xs font-bold uppercase tracking-wider text-gray-400">
-                Follow E-Sell Namibia
+                Follow ESell Namibia
               </p>
               <div className="flex gap-2.5">
                 {SOCIAL_ICONS.map((social) => (
@@ -115,7 +115,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-brand-border pt-6 text-xs text-gray-500 sm:flex-row">
-          <p>© {new Date().getFullYear()} E-Sell Namibia. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} ESell Namibia. All rights reserved.</p>
           <p>Windhoek, Namibia · Nationwide Delivery</p>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-brand-yellow">

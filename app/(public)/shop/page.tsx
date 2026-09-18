@@ -51,7 +51,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
       <SectionHeading
         eyebrow="Handpicked for you"
         title="Explore the marketplace"
-        description={`${total} listing${total === 1 ? "" : "s"} reviewed and published by E-Sell Namibia.`}
+        description={`${total} listing${total === 1 ? "" : "s"} reviewed and published by ESell Namibia.`}
       />
 
       <div className="mt-6">

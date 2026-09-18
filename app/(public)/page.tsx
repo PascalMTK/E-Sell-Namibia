@@ -110,7 +110,7 @@ export default async function HomePage() {
           <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
             <Image
               src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
-              alt="Curated goods available through E-Sell Namibia"
+              alt="Curated goods available through ESell Namibia"
               fill
               priority
               sizes="(min-width: 1024px) 50vw, 100vw"
@@ -145,7 +145,7 @@ export default async function HomePage() {
       <section className="bg-white py-16">
         <Container>
           <SectionHeading
-            eyebrow="Explore E-Sell"
+            eyebrow="Explore ESell"
             title="Shop by category"
             action={
               <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-amber-700">
@@ -157,7 +157,7 @@ export default async function HomePage() {
             {categories.length > 0 ? (
               <CategoryGrid categories={categories} />
             ) : (
-              <p className="text-sm text-secondary-text">Categories will appear here once E-Sell adds them.</p>
+              <p className="text-sm text-secondary-text">Categories will appear here once ESell adds them.</p>
             )}
           </div>
         </Container>
@@ -180,7 +180,7 @@ export default async function HomePage() {
               products={featured}
               favoriteIds={favoriteIds}
               emptyTitle="No featured products yet"
-              emptyDescription="E-Sell hasn't marked any products as featured yet. Check back soon."
+              emptyDescription="ESell hasn't marked any products as featured yet. Check back soon."
             />
           </div>
         </Container>
@@ -213,7 +213,7 @@ export default async function HomePage() {
               Give your goods a new beginning.
             </h2>
             <p className="mt-4 max-w-md text-sm text-gray-400">
-              Tell us about your item. The E-Sell team reviews each request and contacts you before anything is
+              Tell us about your item. The ESell team reviews each request and contacts you before anything is
               listed.
             </p>
             <ButtonLink href="/sell" className="mt-6">
@@ -233,12 +233,12 @@ export default async function HomePage() {
       {/* Trust */}
       <section className="py-16">
         <Container>
-          <SectionHeading eyebrow="Why buy through E-Sell" title="Built around trust, not guesswork" />
+          <SectionHeading eyebrow="Why buy through ESell" title="Built around trust, not guesswork" />
           <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#e6ddc6] bg-[#e6ddc6] sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: <ShieldCheck size={20} />, title: "Products reviewed by E-Sell", body: "Every listing is checked by our team before it reaches the marketplace." },
+              { icon: <ShieldCheck size={20} />, title: "Products reviewed by ESell", body: "Every listing is checked by our team before it reaches the marketplace." },
               { icon: <Users size={20} />, title: "Local Namibian support", body: "Based in Windhoek, with a team that understands buyers and sellers nationwide." },
-              { icon: <MessageCircle size={20} />, title: "Easy product enquiries", body: "Reach E-Sell directly about any listing." },
+              { icon: <MessageCircle size={20} />, title: "Easy product enquiries", body: "Reach ESell directly about any listing." },
               { icon: <Truck size={20} />, title: "Nationwide delivery options", body: "Delivery availability is shown on each listing before you enquire." },
             ].map((item) => (
               <div key={item.title} className="bg-[#fffdf7] p-6">

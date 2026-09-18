@@ -23,7 +23,7 @@ export function ProductContactCta({
   if (!whatsappLink && !phoneNumber) {
     return (
       <div className="rounded-xl border border-dashed border-gray-300 bg-off-white p-4 text-sm text-secondary-text">
-        Product enquiries will be available once E-Sell connects its contact details.
+        Product enquiries will be available once ESell connects its contact details.
       </div>
     );
   }
@@ -35,7 +35,7 @@ export function ProductContactCta({
           href={toTelHref(phoneNumber)}
           className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-brand-black px-5 py-3 text-sm font-bold text-white transition hover:bg-brand-charcoal"
         >
-          <Phone size={16} /> Contact E-Sell
+          <Phone size={16} /> Contact ESell
         </a>
       )}
       {whatsappLink && (
@@ -45,7 +45,7 @@ export function ProductContactCta({
           rel="noopener noreferrer"
           className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-5 py-3 text-sm font-bold text-brand-black transition hover:border-brand-black"
         >
-          <MessageCircle size={16} /> WhatsApp E-Sell
+          <MessageCircle size={16} /> WhatsApp ESell
         </a>
       )}
     </div>

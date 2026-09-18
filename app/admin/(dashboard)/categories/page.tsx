@@ -12,7 +12,7 @@ export default async function AdminCategoriesPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-extrabold text-brand-black">Categories</h1>
-        <p className="text-sm text-secondary-text">Manage the categories customers use to browse E-Sell Namibia.</p>
+        <p className="text-sm text-secondary-text">Manage the categories customers use to browse ESell Namibia.</p>
       </div>
       <CategoryManager categories={categories} />
     </div>

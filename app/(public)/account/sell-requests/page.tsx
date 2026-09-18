@@ -30,14 +30,14 @@ export default async function AccountSellRequestsPage() {
 
   return (
     <div>
-      <SectionHeading title="My Sell Requests" description="Track the status of items you've submitted to E-Sell." />
+      <SectionHeading title="My Sell Requests" description="Track the status of items you've submitted to ESell." />
 
       <div className="mt-8">
         {sellRequests.length === 0 ? (
           <EmptyState
             icon={<ClipboardList size={32} />}
             title="No Sell Requests yet"
-            description="Submit an item and E-Sell's team will review it."
+            description="Submit an item and ESell's team will review it."
             action={
               <Link href="/sell" className="text-sm font-bold text-amber-700 hover:underline">
                 Sell Your Goods

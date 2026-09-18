@@ -5,6 +5,6 @@ export function buildProductWhatsappLink(params: {
 }): string | null {
   const number = (params.number ?? process.env.NEXT_PUBLIC_ESELL_WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
   if (!number) return null;
-  const text = `Hello E-Sell Namibia, I'm interested in ${params.productName} listed for ${params.price}. Is it still available?`;
+  const text = `Hello ESell Namibia, I'm interested in ${params.productName} listed for ${params.price}. Is it still available?`;
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }

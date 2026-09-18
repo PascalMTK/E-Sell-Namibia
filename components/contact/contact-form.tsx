@@ -18,7 +18,7 @@ export function ContactForm() {
       <div className="rounded-xl border border-gray-200 bg-off-white p-6 text-center">
         <CheckCircle2 className="mx-auto mb-2 text-amber-600" size={28} />
         <p className="text-sm font-bold text-brand-black">Message sent</p>
-        <p className="mt-1 text-xs text-secondary-text">E-Sell Namibia will get back to you soon.</p>
+        <p className="mt-1 text-xs text-secondary-text">ESell Namibia will get back to you soon.</p>
       </div>
     );
   }

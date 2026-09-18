@@ -14,17 +14,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "E-Sell Namibia | Buying & Selling made easier for everyone",
-    template: "%s | E-Sell Namibia",
+    default: "ESell Namibia | Buying & Selling made easier for everyone",
+    template: "%s | ESell Namibia",
   },
   description:
-    "E-Sell Namibia is Namibia's buying and selling platform. Discover quality new and second-hand products, or submit your item for E-Sell to review and list.",
+    "ESell Namibia is Namibia's buying and selling platform. Discover quality new and second-hand products, or submit your item for ESell to review and list.",
   icons: { icon: "/logo-mark.png" },
   openGraph: {
-    title: "E-Sell Namibia",
+    title: "ESell Namibia",
     description: "Buying & Selling made easier for everyone.",
     url: siteUrl,
-    siteName: "E-Sell Namibia",
+    siteName: "ESell Namibia",
     locale: "en_NA",
     type: "website",
   },

@@ -20,7 +20,7 @@ async function main() {
     where: { email: adminEmail },
     update: {},
     create: {
-      name: "E-Sell Admin",
+      name: "ESell Admin",
       email: adminEmail,
       phone: null,
       passwordHash: adminPasswordHash,
@@ -193,9 +193,9 @@ async function main() {
 
   // --- Team members ---
   const teamDefs = [
-    { name: "Ndapewa Hamunyela", position: "Founder & CEO", bio: "Leads E-Sell Namibia's strategy and product review process." },
+    { name: "Ndapewa Hamunyela", position: "Founder & CEO", bio: "Leads ESell Namibia's strategy and product review process." },
     { name: "Johannes Van Der Merwe", position: "Head of Operations", bio: "Oversees logistics, delivery coordination and customer support." },
-    { name: "Tulipeni Shikongo", position: "Lead Software Engineer", bio: "Builds and maintains the E-Sell Namibia platform." },
+    { name: "Tulipeni Shikongo", position: "Lead Software Engineer", bio: "Builds and maintains the ESell Namibia platform." },
   ];
   for (const [index, def] of teamDefs.entries()) {
     await prisma.teamMember.upsert({

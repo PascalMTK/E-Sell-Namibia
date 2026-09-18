@@ -12,7 +12,7 @@ export default async function NewProductPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-extrabold text-brand-black">Add Product</h1>
-        <p className="text-sm text-secondary-text">Create a new product listing for E-Sell Namibia.</p>
+        <p className="text-sm text-secondary-text">Create a new product listing for ESell Namibia.</p>
       </div>
       <ProductForm categories={categories} />
     </div>

@@ -39,7 +39,7 @@ export default async function AdminSellRequestsPage({
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-extrabold text-brand-black">Sell Requests</h1>
-        <p className="text-sm text-secondary-text">Review items customers have submitted for E-Sell to sell.</p>
+        <p className="text-sm text-secondary-text">Review items customers have submitted for ESell to sell.</p>
       </div>
 
       <div className="mb-4 flex flex-wrap gap-2">

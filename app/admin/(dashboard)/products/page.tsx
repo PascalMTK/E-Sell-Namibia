@@ -52,7 +52,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
       <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold text-brand-black">Products</h1>
-          <p className="text-sm text-secondary-text">Manage all products available on E-Sell Namibia.</p>
+          <p className="text-sm text-secondary-text">Manage all products available on ESell Namibia.</p>
         </div>
         <ButtonLink href="/admin/products/new">
           <Plus size={16} /> Add Product

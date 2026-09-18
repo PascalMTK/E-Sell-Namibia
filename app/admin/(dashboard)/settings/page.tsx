@@ -14,7 +14,7 @@ export default async function AdminSettingsPage() {
       <div className="mb-6">
         <h1 className="text-2xl font-extrabold text-brand-black">Settings</h1>
         <p className="text-sm text-secondary-text">
-          Contact details used for the &ldquo;Contact E-Sell&rdquo; buttons and the Contact page.
+          Contact details used for the &ldquo;Contact ESell&rdquo; buttons and the Contact page.
         </p>
       </div>
       <Card className="p-6">

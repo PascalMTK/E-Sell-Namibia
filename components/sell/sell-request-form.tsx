@@ -76,7 +76,7 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
         </div>
         <h2 className="text-2xl font-extrabold text-brand-black">Thank you!</h2>
         <p className="mx-auto mt-2 max-w-md text-sm text-secondary-text">
-          Your item has been submitted to E-Sell Namibia for review. Our team will contact you after reviewing
+          Your item has been submitted to ESell Namibia for review. Our team will contact you after reviewing
           your information.
         </p>
         <ButtonLink href="/" className="mt-6">
@@ -195,7 +195,7 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
               <Label htmlFor="expectedPrice">Expected Price (N$)</Label>
               <Input id="expectedPrice" type="number" min={0} {...register("expectedPrice")} />
               <HelpText>
-                Your expected price is not necessarily the final E-Sell marketplace price. Our team will review
+                Your expected price is not necessarily the final ESell marketplace price. Our team will review
                 the product before it is listed.
               </HelpText>
             </div>

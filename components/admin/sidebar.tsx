@@ -35,7 +35,7 @@ export function AdminSidebar({ adminName }: { adminName: string }) {
     <aside className="flex h-full w-64 shrink-0 flex-col border-r border-brand-border bg-brand-charcoal text-white">
       <div className="flex items-center gap-2.5 border-b border-brand-border px-5 py-5">
         <span className="flex h-9 items-center rounded-lg bg-white px-2 py-1">
-          <Image src="/logo.png" alt="E-Sell" width={474} height={193} className="h-5 w-auto" />
+          <Image src="/logo.png" alt="ESell" width={474} height={193} className="h-5 w-auto" />
         </span>
         <div>
           <p className="text-sm font-extrabold uppercase tracking-wide">Namibia</p>

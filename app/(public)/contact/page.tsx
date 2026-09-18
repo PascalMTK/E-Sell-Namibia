@@ -18,7 +18,7 @@ export default async function ContactPage() {
       <SectionHeading
         eyebrow="Let's connect"
         title="Questions? We're here to help"
-        description="Ask about a product or learn how selling through E-Sell works."
+        description="Ask about a product or learn how selling through ESell works."
       />
 
       <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
@@ -80,7 +80,7 @@ export default async function ContactPage() {
             </div>
           )}
           {!hasAnyDetail && (
-            <p className="text-sm text-secondary-text">Contact details will appear here when E-Sell provides them.</p>
+            <p className="text-sm text-secondary-text">Contact details will appear here when ESell provides them.</p>
           )}
         </div>
 

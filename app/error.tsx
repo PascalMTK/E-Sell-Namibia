@@ -13,7 +13,7 @@ export default function GlobalError({ error, reset }: { error: Error & { digest?
       <p className="mb-2 text-sm font-bold uppercase tracking-widest text-red-600">Something went wrong</p>
       <h1 className="text-3xl font-extrabold text-brand-black">We hit a snag</h1>
       <p className="mt-2 max-w-md text-sm text-secondary-text">
-        Please try again. If the problem continues, contact E-Sell Namibia.
+        Please try again. If the problem continues, contact ESell Namibia.
       </p>
       <div className="mt-6 flex gap-3">
         <Button onClick={reset}>Try again</Button>

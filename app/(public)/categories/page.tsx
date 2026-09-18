@@ -12,15 +12,15 @@ export default async function CategoriesPage() {
   return (
     <Container className="py-12">
       <SectionHeading
-        eyebrow="Browse E-Sell"
+        eyebrow="Browse ESell"
         title="All categories"
-        description="Find electronics, vehicles, furniture, fashion and more from E-Sell Namibia's reviewed listings."
+        description="Find electronics, vehicles, furniture, fashion and more from ESell Namibia's reviewed listings."
       />
       <div className="mt-8">
         {categories.length > 0 ? (
           <CategoryGrid categories={categories} />
         ) : (
-          <p className="text-sm text-secondary-text">Categories will appear here once E-Sell adds them.</p>
+          <p className="text-sm text-secondary-text">Categories will appear here once ESell adds them.</p>
         )}
       </div>
     </Container>

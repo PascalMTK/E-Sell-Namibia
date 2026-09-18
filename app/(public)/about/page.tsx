@@ -12,17 +12,17 @@ const steps = [
   {
     icon: <PackageSearch size={20} />,
     title: "Discover",
-    body: "Browse quality new and second-hand products reviewed by the E-Sell team.",
+    body: "Browse quality new and second-hand products reviewed by the ESell team.",
   },
   {
     icon: <ShieldCheck size={20} />,
-    title: "E-Sell reviews every listing",
-    body: "Nothing reaches the marketplace without E-Sell checking it first — pictures, pricing and details.",
+    title: "ESell reviews every listing",
+    body: "Nothing reaches the marketplace without ESell checking it first — pictures, pricing and details.",
   },
   {
     icon: <Truck size={20} />,
     title: "Buy or sell with confidence",
-    body: "Contact E-Sell about any listing, or submit your own goods for us to review and list on your behalf.",
+    body: "Contact ESell about any listing, or submit your own goods for us to review and list on your behalf.",
   },
 ];
 
@@ -33,17 +33,17 @@ export default async function AboutPage() {
     <>
       <Container className="py-12">
         <SectionHeading
-          eyebrow="About E-Sell Namibia"
+          eyebrow="About ESell Namibia"
           title="Namibia's buying and selling platform"
-          description="E-Sell Namibia connects buyers and sellers across the country, with every listing reviewed and managed by our team before it goes live."
+          description="ESell Namibia connects buyers and sellers across the country, with every listing reviewed and managed by our team before it goes live."
         />
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-xl border border-gray-200 bg-off-white p-6">
             <h2 className="mb-2 text-sm font-bold text-brand-black">How buying works</h2>
             <p className="text-sm text-secondary-text">
-              Browse listings on the marketplace, then contact E-Sell directly about any item you&rsquo;re
-              interested in. E-Sell handles enquiries on behalf of the goods listed.
+              Browse listings on the marketplace, then contact ESell directly about any item you&rsquo;re
+              interested in. ESell handles enquiries on behalf of the goods listed.
             </p>
           </div>
           <div className="rounded-xl border border-gray-200 bg-off-white p-6">
@@ -67,7 +67,7 @@ export default async function AboutPage() {
 
       <section id="how-it-works" className="border-y border-gray-100 bg-off-white py-14">
         <Container>
-          <SectionHeading eyebrow="Simple by design" title="Why E-Sell manages every listing" />
+          <SectionHeading eyebrow="Simple by design" title="Why ESell manages every listing" />
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {steps.map((step) => (
               <div key={step.title} className="rounded-xl border border-gray-200 bg-white p-6">
@@ -84,7 +84,7 @@ export default async function AboutPage() {
 
       <section id="team" className="py-14">
         <Container>
-          <SectionHeading eyebrow="The people behind E-Sell" title="Meet the E-Sell Namibia team" />
+          <SectionHeading eyebrow="The people behind ESell" title="Meet the ESell Namibia team" />
           <div className="mt-8">
             {team.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -96,7 +96,7 @@ export default async function AboutPage() {
               <EmptyState
                 icon={<CheckCircle2 size={32} />}
                 title="Team profiles coming soon"
-                description="E-Sell hasn't published team profiles yet."
+                description="ESell hasn't published team profiles yet."
               />
             )}
           </div>
@@ -107,7 +107,7 @@ export default async function AboutPage() {
         <Container className="flex flex-col items-center gap-4 text-center">
           <h2 className="text-2xl font-extrabold">Have something to sell?</h2>
           <p className="max-w-md text-sm text-gray-400">
-            Submit your item for E-Sell to review — our team handles the rest.
+            Submit your item for ESell to review — our team handles the rest.
           </p>
           <ButtonLink href="/sell">Sell Your Goods</ButtonLink>
         </Container>

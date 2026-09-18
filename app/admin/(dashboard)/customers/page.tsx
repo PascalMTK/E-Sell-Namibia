@@ -17,7 +17,7 @@ export default async function AdminCustomersPage() {
     <div>
       <div className="mb-6">
         <h1 className="text-2xl font-extrabold text-brand-black">Customers</h1>
-        <p className="text-sm text-secondary-text">Registered E-Sell Namibia customers.</p>
+        <p className="text-sm text-secondary-text">Registered ESell Namibia customers.</p>
       </div>
 
       {customers.length === 0 ? (
