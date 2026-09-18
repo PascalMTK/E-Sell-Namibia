@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Create Account" };
 
 export default function RegisterPage() {
   return (
-    <AuthCard title="Create your account" description="Track your Sell Requests and save your favorite listings.">
+    <AuthCard title="Create your account" description="Track your Sell Requests and save your favorite listings." variant="showcase">
       <RegisterForm />
     </AuthCard>
   );
