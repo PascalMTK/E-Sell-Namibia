@@ -46,10 +46,11 @@ export function AuthCard({
                 src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?auto=format&fit=crop&w=1000&q=80"
                 alt="A welcoming space for shopping and selling"
                 fill
+                priority
                 sizes="(min-width: 768px) 45vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-brand-deep-black via-brand-deep-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-brand-deep-black/90 via-brand-deep-black/60 to-brand-deep-black/35" />
               <div className="absolute right-0 top-10 bg-brand-yellow px-5 py-3 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-black">Buy • Sell • Discover</div>
               <div className="absolute inset-x-0 bottom-0 p-10 text-white lg:p-12">
                 <span className="mb-5 block h-1 w-14 bg-brand-yellow" />
