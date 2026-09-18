@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --color-white: #ffffff;
+  --color-off-white: #f8f9fa;
+  --color-brand-yellow: #ffc107;
+  --color-brand-yellow-hover: #ffb300;
+  --color-brand-yellow-warm: #f5b041;
+  --color-brand-black: #1a1a1a;
+  --color-brand-deep-black: #0d0d0d;
+  --color-brand-charcoal: #141414;
+  --color-brand-border: #2a2a2a;
+  --color-secondary-text: #666666;
+}
+
+@theme inline {
+  --color-white: var(--color-white);
+  --color-off-white: var(--color-off-white);
+  --color-brand-yellow: var(--color-brand-yellow);
+  --color-brand-yellow-hover: var(--color-brand-yellow-hover);
+  --color-brand-yellow-warm: var(--color-brand-yellow-warm);
+  --color-brand-black: var(--color-brand-black);
+  --color-brand-deep-black: var(--color-brand-deep-black);
+  --color-brand-charcoal: var(--color-brand-charcoal);
+  --color-brand-border: var(--color-brand-border);
+  --color-secondary-text: var(--color-secondary-text);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-brand-black);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Team card interaction (public About page) */
+.team-card .team-social-bar {
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.team-card:hover .team-social-bar,
+.team-card:focus-within .team-social-bar {
+  transform: translateY(0);
+}
+.team-card .team-avatar {
+  transition:
+    transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.35s ease;
+}
+.team-card:hover .team-avatar,
+.team-card:focus-within .team-avatar {
+  transform: scale(0.82);
+  box-shadow:
+    0 0 0 6px var(--color-brand-yellow),
+    0 10px 22px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 640px) {
+  .team-card .team-social-bar {
+    position: static;
+    transform: none;
+    margin-top: 0.75rem;
+  }
+}
