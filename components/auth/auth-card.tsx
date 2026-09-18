@@ -24,14 +24,14 @@ export function AuthCard({
               <div className="mb-10 flex items-center justify-between gap-4">
                 <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-brand-black hover:text-[#8a6500]">
                   <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-yellow text-base font-black tracking-normal">E</span>
-                  E-Sell Namibia
+                  ESell Namibia
                 </Link>
                 <Link href="/" aria-label="Close and return to homepage" className="rounded-full p-2 text-secondary-text transition hover:bg-off-white hover:text-brand-black focus-visible:outline-2 focus-visible:outline-brand-yellow">
                   <X size={20} />
                 </Link>
               </div>
               <div className="mb-8">
-                <p className="mb-3 flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#8a6500] before:h-0.5 before:w-6 before:bg-brand-yellow">Your E-Sell account</p>
+                <p className="mb-3 flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.18em] text-[#8a6500] before:h-0.5 before:w-6 before:bg-brand-yellow">Your ESell account</p>
                 <h1 className="text-3xl font-extrabold tracking-[-0.045em] text-brand-black sm:text-4xl">{title}<span className="text-brand-yellow">.</span></h1>
                 {description && <p className="mt-3 max-w-sm text-sm leading-6 text-secondary-text">{description}</p>}
               </div>
