@@ -19,7 +19,7 @@ export async function Header() {
   const session = await auth();
 
   return (
-    <header className="sticky top-0 z-30 border-b border-gray-200 bg-white/95 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b border-brand-yellow bg-white/95 shadow-[0_2px_0_rgba(255,193,7,0.12)] backdrop-blur">
       <div className="mx-auto flex min-h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:min-h-20 lg:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] xl:gap-6">
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3" aria-label="E-Sell Namibia home">
           <Image src="/logo.png" alt="E-Sell" width={474} height={193} className="h-8 w-auto sm:h-9" priority />

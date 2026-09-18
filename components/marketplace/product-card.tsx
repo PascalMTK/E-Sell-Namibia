@@ -20,7 +20,7 @@ export function ProductCard({
   const hasDelivery = product.windhoekDelivery || product.nationwideDelivery;
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)]">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-[#e8e4d8] bg-white shadow-[0_4px_20px_rgba(0,0,0,0.05)] transition hover:-translate-y-1 hover:border-brand-yellow hover:shadow-[0_12px_30px_rgba(75,55,0,0.12)]">
       <Link href={`/products/${product.slug}`} className="relative block aspect-4/3 overflow-hidden bg-off-white">
         {cover ? (
           <Image
@@ -85,7 +85,7 @@ export function ProductCard({
           </div>
           <Link
             href={`/products/${product.slug}`}
-            className="rounded-lg bg-brand-black px-3 py-2 text-xs font-bold text-white transition hover:bg-brand-charcoal"
+            className="rounded-lg bg-brand-black px-3 py-2 text-xs font-bold text-white transition group-hover:bg-brand-yellow group-hover:text-brand-black"
           >
             View Product
           </Link>

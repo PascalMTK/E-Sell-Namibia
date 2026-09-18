@@ -59,21 +59,22 @@ export default async function HomePage() {
       )}
 
       {/* Hero */}
-      <section className="border-b border-gray-100 bg-off-white">
-        <Container className="grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:py-20">
+      <section className="relative overflow-hidden border-b border-[#eadcae] bg-[#fff9e8]">
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-2 bg-brand-yellow sm:w-3" />
+        <Container className="grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
           <div>
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3 py-1 text-xs font-bold text-amber-700">
+            <p className="mb-5 inline-flex items-center gap-2 border-l-4 border-brand-yellow pl-3 text-xs font-extrabold uppercase tracking-wider text-[#765600]">
               <MapPin size={12} /> Namibia&rsquo;s Buying & Selling Platform
             </p>
-            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-brand-black sm:text-5xl">
-              Buying & Selling made easier for everyone.
+            <h1 className="max-w-xl text-4xl font-black leading-[1.05] tracking-[-0.055em] text-brand-black sm:text-5xl lg:text-[3.55rem]">
+              Buying & Selling made easier <span className="bg-brand-yellow px-1 text-brand-black box-decoration-clone">for everyone.</span>
             </h1>
-            <p className="mt-5 max-w-lg text-base text-secondary-text">
+            <p className="mt-6 max-w-lg text-base leading-7 text-[#514c3f]">
               Discover quality new and second-hand products across Namibia, or send us the goods you want to
               sell.
             </p>
 
-            <form action="/shop" className="mt-8 flex max-w-md rounded-xl border border-gray-300 bg-white p-1.5 shadow-sm">
+            <form action="/shop" className="mt-8 flex max-w-md rounded-xl border border-[#d9cfae] bg-white p-1.5 shadow-[0_8px_24px_rgba(80,58,0,0.1)]">
               <input
                 name="q"
                 placeholder="What are you looking for?"
@@ -106,7 +107,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl">
+          <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
             <Image
               src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
               alt="Curated goods available through E-Sell Namibia"
@@ -115,6 +116,9 @@ export default async function HomePage() {
               sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
+            <div className="absolute bottom-0 left-0 flex items-center gap-3 bg-brand-black px-4 py-3 text-xs font-bold uppercase tracking-wider text-white">
+              <span className="h-2 w-2 bg-brand-yellow" /> Discover your next great find
+            </div>
           </div>
         </Container>
       </section>
@@ -138,7 +142,7 @@ export default async function HomePage() {
       )}
 
       {/* Categories */}
-      <section className="py-16">
+      <section className="bg-white py-16">
         <Container>
           <SectionHeading
             eyebrow="Explore E-Sell"
@@ -160,7 +164,7 @@ export default async function HomePage() {
       </section>
 
       {/* Featured products */}
-      <section className="bg-off-white py-16">
+      <section className="border-y border-[#eee7d4] bg-[#f7f5ef] py-16">
         <Container>
           <SectionHeading
             eyebrow="Handpicked for you"
@@ -198,9 +202,10 @@ export default async function HomePage() {
       </section>
 
       {/* Sell CTA */}
-      <section className="bg-brand-black py-16 text-white">
+      <section className="relative overflow-hidden bg-brand-black py-16 text-white">
+        <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-brand-yellow lg:block" />
         <Container className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-          <div>
+          <div className="relative z-10">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-yellow">
               Have something to sell?
             </p>
@@ -215,12 +220,12 @@ export default async function HomePage() {
               Sell Your Goods <ArrowRight size={15} />
             </ButtonLink>
           </div>
-          <div className="flex justify-center gap-3 text-xs font-bold uppercase tracking-widest text-gray-500">
-            <span className="rounded-full border border-brand-border px-4 py-2">Submit</span>
-            <ArrowRight className="my-auto text-brand-yellow" size={16} />
-            <span className="rounded-full border border-brand-border px-4 py-2">Review</span>
-            <ArrowRight className="my-auto text-brand-yellow" size={16} />
-            <span className="rounded-full border border-brand-border px-4 py-2">List</span>
+          <div className="relative z-10 flex flex-wrap items-center justify-center gap-2 text-xs font-extrabold uppercase tracking-wider text-brand-black sm:gap-3">
+            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">01 Submit</span>
+            <ArrowRight className="my-auto text-brand-yellow lg:text-brand-black" size={16} />
+            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">02 Review</span>
+            <ArrowRight className="my-auto text-brand-yellow lg:text-brand-black" size={16} />
+            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">03 List</span>
           </div>
         </Container>
       </section>
@@ -229,15 +234,15 @@ export default async function HomePage() {
       <section className="py-16">
         <Container>
           <SectionHeading eyebrow="Why buy through E-Sell" title="Built around trust, not guesswork" />
-          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#e6ddc6] bg-[#e6ddc6] sm:grid-cols-2 lg:grid-cols-4">
             {[
               { icon: <ShieldCheck size={20} />, title: "Products reviewed by E-Sell", body: "Every listing is checked by our team before it reaches the marketplace." },
               { icon: <Users size={20} />, title: "Local Namibian support", body: "Based in Windhoek, with a team that understands buyers and sellers nationwide." },
               { icon: <MessageCircle size={20} />, title: "Easy product enquiries", body: "Reach E-Sell directly about any listing." },
               { icon: <Truck size={20} />, title: "Nationwide delivery options", body: "Delivery availability is shown on each listing before you enquire." },
             ].map((item) => (
-              <div key={item.title} className="bg-white p-6">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow/15 text-amber-700">
+              <div key={item.title} className="bg-[#fffdf7] p-6">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-yellow text-brand-black">
                   {item.icon}
                 </div>
                 <h3 className="mb-1.5 text-sm font-bold text-brand-black">{item.title}</h3>

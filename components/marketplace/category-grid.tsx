@@ -16,9 +16,9 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
         <Link
           key={category.id}
           href={`/shop?category=${category.slug}`}
-          className="flex min-h-[130px] flex-col items-start justify-between rounded-xl border border-gray-200 bg-off-white p-4 transition hover:-translate-y-0.5 hover:border-brand-yellow hover:bg-brand-yellow/10"
+          className="group flex min-h-[142px] flex-col items-start justify-between rounded-xl border border-[#e8e4d8] bg-[#faf8f1] p-4 transition hover:-translate-y-1 hover:border-brand-yellow hover:bg-[#fff0b8] hover:shadow-[0_10px_24px_rgba(60,45,0,0.1)]"
         >
-          <span className="text-2xl">
+          <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-white text-2xl shadow-sm transition group-hover:bg-brand-black group-hover:text-brand-yellow">
             {category.icon || <Package size={24} className="text-amber-700" />}
           </span>
           <span>

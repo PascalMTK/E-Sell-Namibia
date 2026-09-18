@@ -33,7 +33,7 @@ export function SectionHeading({
     <div className={cn("flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end", className)}>
       <div>
         {eyebrow && (
-          <p className="mb-2 text-xs font-bold tracking-widest text-amber-700 uppercase">{eyebrow}</p>
+          <p className="mb-3 flex items-center gap-2.5 text-xs font-extrabold tracking-widest text-[#8a6500] uppercase before:h-0.5 before:w-6 before:bg-brand-yellow">{eyebrow}</p>
         )}
         <h2 className="text-2xl font-extrabold tracking-tight text-brand-black sm:text-3xl">{title}</h2>
         {description && <p className="mt-2 max-w-xl text-sm text-secondary-text">{description}</p>}
