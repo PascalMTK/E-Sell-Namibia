@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, MapPin, MessageCircle, Phone, Clock } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/card";
 import { ContactForm } from "@/components/contact/contact-form";
+import { LocationMap } from "@/components/contact/location-map";
 import { getSiteSettings } from "@/lib/data/settings";
 import { toTelHref } from "@/lib/utils/phone";
 
@@ -87,6 +88,12 @@ export default async function ContactPage() {
           <ContactForm />
         </div>
       </div>
+
+      {settings.address && (
+        <div className="mt-10">
+          <LocationMap address={settings.address} />
+        </div>
+      )}
     </Container>
   );
 }

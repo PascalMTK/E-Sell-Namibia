@@ -5,9 +5,11 @@ import { Container, SectionHeading } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/marketplace/category-grid";
 import { ProductGrid } from "@/components/marketplace/product-grid";
+import { GalleryDock } from "@/components/marketplace/gallery-dock";
 import { getCategoriesWithProductCount } from "@/lib/data/categories";
 import { getFeaturedProducts, getNewArrivals } from "@/lib/data/products";
 import { getActiveBanners } from "@/lib/data/banners";
+import { getDockShowcaseProducts } from "@/lib/data/showcase";
 import { getUserFavoriteIds } from "@/app/actions/favorites";
 import { auth } from "@/lib/auth";
 
@@ -15,13 +17,24 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const session = await auth();
-  const [categories, featured, newArrivals, favoriteIds, banners] = await Promise.all([
+  const [categories, featured, newArrivals, favoriteIds, banners, showcaseProducts] = await Promise.all([
     getCategoriesWithProductCount(),
     getFeaturedProducts(8),
     getNewArrivals(8),
     getUserFavoriteIds(session?.user?.id),
     getActiveBanners(),
+    getDockShowcaseProducts(10),
   ]);
+
+  const dockItems = showcaseProducts
+    .filter((p) => p.images[0])
+    .map((p) => ({
+      id: p.id,
+      slug: p.slug,
+      name: p.name,
+      price: p.price.toString(),
+      image: p.images[0].url,
+    }));
 
   return (
     <>
@@ -105,6 +118,24 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* Interactive showcase dock */}
+      {dockItems.length > 0 && (
+        <section className="bg-brand-deep-black py-14">
+          <Container>
+            <div className="mb-8 text-center">
+              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-yellow">
+                Interactive Showcase
+              </p>
+              <h2 className="text-2xl font-extrabold text-white sm:text-3xl">Hover to explore</h2>
+              <p className="mx-auto mt-2 max-w-md text-sm text-gray-400">
+                Move your cursor across the dock to preview featured finds — or tap and scroll on mobile.
+              </p>
+            </div>
+            <GalleryDock items={dockItems} />
+          </Container>
+        </section>
+      )}
 
       {/* Categories */}
       <section className="py-16">
