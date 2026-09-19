@@ -8,7 +8,7 @@ import { ProductContactCta } from "@/components/products/contact-cta";
 import { FavoriteButton } from "@/components/marketplace/favorite-button";
 import { ProductGrid } from "@/components/marketplace/product-grid";
 import { formatNad, calculateDiscountPercent } from "@/lib/utils/currency";
-import { PRODUCT_CONDITIONS } from "@/lib/constants";
+import { PRODUCT_CONDITIONS, STOCK_STATUSES } from "@/lib/constants";
 import { getProductBySlug, getRelatedProducts, incrementProductViewCount } from "@/lib/data/products";
 import { getSiteSettings } from "@/lib/data/settings";
 import { getUserFavoriteIds } from "@/app/actions/favorites";
@@ -112,7 +112,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
               <dt className="text-xs text-secondary-text">Availability</dt>
               <dd className="flex items-center gap-1 font-semibold text-brand-black">
                 <PackageCheck size={13} />
-                {product.sold ? "Sold" : product.stockStatus.replace("_", " ").toLowerCase()}
+                {product.sold
+                  ? "Sold"
+                  : STOCK_STATUSES.find((s) => s.value === product.stockStatus)?.label ?? product.stockStatus}
               </dd>
             </div>
           </dl>

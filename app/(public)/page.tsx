@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, MapPin, Search, ShieldCheck, Truck, Users, MessageCircle } from "lucide-react";
+import { ArrowRight, MapPin, Search, ShieldCheck, ShoppingBag, Tag, Truck, Users, MessageCircle } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/card";
 import { ButtonLink } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/marketplace/category-grid";
@@ -90,10 +90,10 @@ export default async function HomePage() {
 
             <div className="mt-8 flex flex-wrap gap-3">
               <ButtonLink href="/shop" size="lg">
-                Shop Now
+                <ShoppingBag size={16} /> Shop Now
               </ButtonLink>
               <ButtonLink href="/sell" variant="secondary" size="lg">
-                Sell Your Goods
+                <Tag size={16} /> Sell Your Goods
               </ButtonLink>
             </div>
 
@@ -107,17 +107,28 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
-            <Image
-              src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
-              alt="Curated goods available through ESell Namibia"
-              fill
-              priority
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute bottom-0 left-0 flex items-center gap-3 bg-brand-black px-4 py-3 text-xs font-bold uppercase tracking-wider text-white">
-              <span className="h-2 w-2 bg-brand-yellow" /> Discover your next great find
+          <div className="relative">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
+              <Image
+                src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
+                alt="Curated goods available through ESell Namibia"
+                fill
+                priority
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover"
+              />
+              <div className="absolute bottom-0 left-0 flex items-center gap-3 bg-brand-black px-4 py-3 text-xs font-bold uppercase tracking-wider text-white">
+                <span className="h-2 w-2 bg-brand-yellow" /> Discover your next great find
+              </div>
+            </div>
+            <div className="absolute -top-4 -left-4 z-10 flex items-center gap-2 rounded-xl border border-[#eadcae] bg-white px-4 py-2.5 shadow-[0_10px_28px_rgba(80,58,0,0.16)] sm:-left-6">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-yellow text-brand-black">
+                <ShieldCheck size={16} />
+              </span>
+              <span>
+                <span className="block text-xs font-extrabold text-brand-black">Reviewed by ESell</span>
+                <span className="block text-[10px] font-semibold text-secondary-text">Every listing checked first</span>
+              </span>
             </div>
           </div>
         </Container>
@@ -220,12 +231,27 @@ export default async function HomePage() {
               Sell Your Goods <ArrowRight size={15} />
             </ButtonLink>
           </div>
-          <div className="relative z-10 flex flex-wrap items-center justify-center gap-2 text-xs font-extrabold uppercase tracking-wider text-brand-black sm:gap-3">
-            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">01 Submit</span>
-            <ArrowRight className="my-auto text-brand-yellow lg:text-brand-black" size={16} />
-            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">02 Review</span>
-            <ArrowRight className="my-auto text-brand-yellow lg:text-brand-black" size={16} />
-            <span className="rounded-lg bg-brand-yellow px-4 py-3 lg:bg-brand-black lg:text-brand-yellow">03 List</span>
+          <div className="relative z-10 flex flex-col gap-6 lg:py-4 lg:pl-8">
+            {[
+              { n: "01", title: "Submit", body: "Send us your item's details, photos and expected price." },
+              { n: "02", title: "Review", body: "The ESell team checks it and may reach out for more details." },
+              { n: "03", title: "List", body: "Once accepted, we publish it with a final price and photos." },
+            ].map((step, i) => (
+              <div key={step.n} className="flex items-start gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-black text-sm font-extrabold text-brand-yellow">
+                  {step.n}
+                </span>
+                <div>
+                  <p className="text-sm font-extrabold uppercase tracking-wider text-white lg:text-brand-black">
+                    {step.title}
+                  </p>
+                  <p className="mt-0.5 max-w-xs text-xs font-semibold text-gray-400 lg:text-brand-black/70">
+                    {step.body}
+                  </p>
+                </div>
+                {i < 2 && <span className="sr-only">Then</span>}
+              </div>
+            ))}
           </div>
         </Container>
       </section>

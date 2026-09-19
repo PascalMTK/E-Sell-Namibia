@@ -24,7 +24,9 @@ export function CategoryGrid({ categories }: { categories: CategoryItem[] }) {
           <span>
             <span className="block text-sm font-bold text-brand-black">{category.name}</span>
             {typeof category._count?.products === "number" && (
-              <span className="text-xs text-secondary-text">{category._count.products} listings</span>
+              <span className="text-xs text-secondary-text">
+                {category._count.products} {category._count.products === 1 ? "listing" : "listings"}
+              </span>
             )}
           </span>
         </Link>
