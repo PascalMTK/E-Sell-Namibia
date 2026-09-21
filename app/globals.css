@@ -61,6 +61,88 @@ body {
   }
 }
 
+/* Scroll reveal (components/ui/reveal.tsx) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Targets grandchildren: Reveal wraps a single grid container (rendered by
+   ProductGrid/CategoryGrid or written inline), so the actual cards are one
+   level deeper than the Reveal wrapper's direct child. */
+.reveal-stagger > * > * {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal-stagger.is-visible > * > * {
+  animation: reveal-item 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes reveal-item {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.reveal-stagger.is-visible > * > *:nth-child(1) { animation-delay: 0ms; }
+.reveal-stagger.is-visible > * > *:nth-child(2) { animation-delay: 60ms; }
+.reveal-stagger.is-visible > * > *:nth-child(3) { animation-delay: 120ms; }
+.reveal-stagger.is-visible > * > *:nth-child(4) { animation-delay: 180ms; }
+.reveal-stagger.is-visible > * > *:nth-child(5) { animation-delay: 240ms; }
+.reveal-stagger.is-visible > * > *:nth-child(6) { animation-delay: 300ms; }
+.reveal-stagger.is-visible > * > *:nth-child(7) { animation-delay: 360ms; }
+.reveal-stagger.is-visible > * > *:nth-child(8) { animation-delay: 420ms; }
+.reveal-stagger.is-visible > * > *:nth-child(n + 9) { animation-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-stagger > * > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+}
+
+/* Hero entrance (public home page) */
+@keyframes hero-copy-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-media-enter {
+  from { opacity: 0; transform: scale(1.05) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.hero-copy-enter { animation: hero-copy-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.hero-media-enter { animation: hero-media-enter 800ms 120ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy-enter, .hero-media-enter { animation: none; }
+}
+
+/* Mobile nav panel (components/layout/mobile-menu.tsx) */
+.mobile-nav-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.3s ease, opacity 0.25s ease;
+}
+.mobile-nav-panel.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.mobile-nav-panel > div {
+  overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-panel {
+    transition: none;
+  }
+}
+
 /* Team card interaction (public About page) */
 .team-card .team-social-bar {
   transform: translateY(100%);

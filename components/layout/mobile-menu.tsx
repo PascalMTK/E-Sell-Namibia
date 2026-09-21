@@ -3,6 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils/cn";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -40,22 +41,41 @@ export function MobileMenu({ isAuthenticated }: { isAuthenticated: boolean }) {
         onClick={() => setOpen((v) => !v)}
         className="rounded-lg p-2 text-brand-black hover:bg-off-white"
       >
-        {open ? <X size={22} /> : <Menu size={22} />}
+        <span className="relative block h-5.5 w-5.5">
+          <Menu
+            size={22}
+            className={cn(
+              "absolute inset-0 transition duration-200",
+              open ? "rotate-90 opacity-0" : "rotate-0 opacity-100",
+            )}
+          />
+          <X
+            size={22}
+            className={cn(
+              "absolute inset-0 transition duration-200",
+              open ? "rotate-0 opacity-100" : "-rotate-90 opacity-0",
+            )}
+          />
+        </span>
       </button>
 
-      {open && (
-        <div
-          id={menuId}
-          ref={panelRef}
-          className="absolute inset-x-0 top-full z-40 border-b border-gray-200 bg-white px-4 py-4 shadow-lg"
-        >
-          <nav aria-label="Mobile navigation" className="flex flex-col">
+      <div
+        id={menuId}
+        ref={panelRef}
+        inert={!open}
+        className={cn(
+          "mobile-nav-panel absolute inset-x-0 top-full z-40 border-b border-gray-200 bg-white px-4 shadow-lg",
+          open && "is-open",
+        )}
+      >
+        <div>
+          <nav aria-label="Mobile navigation" className="flex flex-col py-4">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-semibold text-brand-black hover:bg-off-white"
+                className="rounded-lg px-3 py-3 text-sm font-semibold text-brand-black transition hover:translate-x-1 hover:bg-off-white"
               >
                 {link.label}
               </Link>
@@ -63,13 +83,13 @@ export function MobileMenu({ isAuthenticated }: { isAuthenticated: boolean }) {
             <Link
               href={isAuthenticated ? "/account" : "/login"}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-3 text-sm font-semibold text-brand-black hover:bg-off-white"
+              className="rounded-lg px-3 py-3 text-sm font-semibold text-brand-black transition hover:translate-x-1 hover:bg-off-white"
             >
               {isAuthenticated ? "My Account" : "Login / Register"}
             </Link>
           </nav>
         </div>
-      )}
+      </div>
     </div>
   );
 }

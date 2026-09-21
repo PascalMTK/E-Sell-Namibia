@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, MapPin, Search, ShieldCheck, ShoppingBag, Tag, Truck, Users, MessageCircle } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/card";
+import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/marketplace/category-grid";
 import { ProductGrid } from "@/components/marketplace/product-grid";
@@ -62,7 +63,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden border-b border-[#eadcae] bg-[#fff9e8]">
         <div className="pointer-events-none absolute left-0 top-0 h-full w-2 bg-brand-yellow sm:w-3" />
         <Container className="grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
-          <div>
+          <div className="hero-copy-enter">
             <p className="mb-5 inline-flex items-center gap-2 border-l-4 border-brand-yellow pl-3 text-xs font-extrabold uppercase tracking-wider text-[#765600]">
               <MapPin size={12} /> Namibia&rsquo;s Buying & Selling Platform
             </p>
@@ -107,7 +108,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div className="relative">
+          <div className="hero-media-enter relative">
             <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
               <Image
                 src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
@@ -138,7 +139,7 @@ export default async function HomePage() {
       {dockItems.length > 0 && (
         <section className="bg-brand-deep-black py-14">
           <Container>
-            <div className="mb-8 text-center">
+            <Reveal className="mb-8 text-center">
               <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-yellow">
                 Interactive Showcase
               </p>
@@ -146,8 +147,10 @@ export default async function HomePage() {
               <p className="mx-auto mt-2 max-w-md text-sm text-gray-400">
                 Move your cursor across the dock to preview featured finds — or tap and scroll on mobile.
               </p>
-            </div>
-            <GalleryDock items={dockItems} />
+            </Reveal>
+            <Reveal>
+              <GalleryDock items={dockItems} />
+            </Reveal>
           </Container>
         </section>
       )}
@@ -155,60 +158,66 @@ export default async function HomePage() {
       {/* Categories */}
       <section className="bg-white py-16">
         <Container>
-          <SectionHeading
-            eyebrow="Explore ESell"
-            title="Shop by category"
-            action={
-              <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-amber-700">
-                View all categories <ArrowRight size={14} className="inline" />
-              </Link>
-            }
-          />
-          <div className="mt-8">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Explore ESell"
+              title="Shop by category"
+              action={
+                <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-amber-700">
+                  View all categories <ArrowRight size={14} className="inline" />
+                </Link>
+              }
+            />
+          </Reveal>
+          <Reveal stagger className="mt-8">
             {categories.length > 0 ? (
               <CategoryGrid categories={categories} />
             ) : (
               <p className="text-sm text-secondary-text">Categories will appear here once ESell adds them.</p>
             )}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* Featured products */}
       <section className="border-y border-[#eee7d4] bg-[#f7f5ef] py-16">
         <Container>
-          <SectionHeading
-            eyebrow="Handpicked for you"
-            title="Featured Products"
-            action={
-              <Link href="/shop" className="text-sm font-bold text-brand-black hover:text-amber-700">
-                Browse marketplace <ArrowRight size={14} className="inline" />
-              </Link>
-            }
-          />
-          <div className="mt-8">
+          <Reveal>
+            <SectionHeading
+              eyebrow="Handpicked for you"
+              title="Featured Products"
+              action={
+                <Link href="/shop" className="text-sm font-bold text-brand-black hover:text-amber-700">
+                  Browse marketplace <ArrowRight size={14} className="inline" />
+                </Link>
+              }
+            />
+          </Reveal>
+          <Reveal stagger className="mt-8">
             <ProductGrid
               products={featured}
               favoriteIds={favoriteIds}
               emptyTitle="No featured products yet"
               emptyDescription="ESell hasn't marked any products as featured yet. Check back soon."
             />
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* New arrivals */}
       <section className="py-16">
         <Container>
-          <SectionHeading eyebrow="Just listed" title="New Arrivals" />
-          <div className="mt-8">
+          <Reveal>
+            <SectionHeading eyebrow="Just listed" title="New Arrivals" />
+          </Reveal>
+          <Reveal stagger className="mt-8">
             <ProductGrid
               products={newArrivals}
               favoriteIds={favoriteIds}
               emptyTitle="No new arrivals yet"
               emptyDescription="Newly published products will show up here."
             />
-          </div>
+          </Reveal>
         </Container>
       </section>
 
@@ -216,7 +225,7 @@ export default async function HomePage() {
       <section className="relative overflow-hidden bg-brand-black py-16 text-white">
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-brand-yellow lg:block" />
         <Container className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
-          <div className="relative z-10">
+          <Reveal className="relative z-10">
             <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-yellow">
               Have something to sell?
             </p>
@@ -230,52 +239,58 @@ export default async function HomePage() {
             <ButtonLink href="/sell" className="mt-6">
               Sell Your Goods <ArrowRight size={15} />
             </ButtonLink>
-          </div>
-          <div className="relative z-10 flex flex-col gap-6 lg:py-4 lg:pl-8">
-            {[
-              { n: "01", title: "Submit", body: "Send us your item's details, photos and expected price." },
-              { n: "02", title: "Review", body: "The ESell team checks it and may reach out for more details." },
-              { n: "03", title: "List", body: "Once accepted, we publish it with a final price and photos." },
-            ].map((step, i) => (
-              <div key={step.n} className="flex items-start gap-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-black text-sm font-extrabold text-brand-yellow">
-                  {step.n}
-                </span>
-                <div>
-                  <p className="text-sm font-extrabold uppercase tracking-wider text-white lg:text-brand-black">
-                    {step.title}
-                  </p>
-                  <p className="mt-0.5 max-w-xs text-xs font-semibold text-gray-400 lg:text-brand-black/70">
-                    {step.body}
-                  </p>
+          </Reveal>
+          <Reveal stagger className="relative z-10">
+            <div className="flex flex-col gap-6 lg:py-4 lg:pl-8">
+              {[
+                { n: "01", title: "Submit", body: "Send us your item's details, photos and expected price." },
+                { n: "02", title: "Review", body: "The ESell team checks it and may reach out for more details." },
+                { n: "03", title: "List", body: "Once accepted, we publish it with a final price and photos." },
+              ].map((step, i) => (
+                <div key={step.n} className="flex items-start gap-4">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-black text-sm font-extrabold text-brand-yellow">
+                    {step.n}
+                  </span>
+                  <div>
+                    <p className="text-sm font-extrabold uppercase tracking-wider text-white lg:text-brand-black">
+                      {step.title}
+                    </p>
+                    <p className="mt-0.5 max-w-xs text-xs font-semibold text-gray-400 lg:text-brand-black/70">
+                      {step.body}
+                    </p>
+                  </div>
+                  {i < 2 && <span className="sr-only">Then</span>}
                 </div>
-                {i < 2 && <span className="sr-only">Then</span>}
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
 
       {/* Trust */}
       <section className="py-16">
         <Container>
-          <SectionHeading eyebrow="Why buy through ESell" title="Built around trust, not guesswork" />
-          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#e6ddc6] bg-[#e6ddc6] sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: <ShieldCheck size={20} />, title: "Products reviewed by ESell", body: "Every listing is checked by our team before it reaches the marketplace." },
-              { icon: <Users size={20} />, title: "Local Namibian support", body: "Based in Windhoek, with a team that understands buyers and sellers nationwide." },
-              { icon: <MessageCircle size={20} />, title: "Easy product enquiries", body: "Reach ESell directly about any listing." },
-              { icon: <Truck size={20} />, title: "Nationwide delivery options", body: "Delivery availability is shown on each listing before you enquire." },
-            ].map((item) => (
-              <div key={item.title} className="bg-[#fffdf7] p-6">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-yellow text-brand-black">
-                  {item.icon}
+          <Reveal>
+            <SectionHeading eyebrow="Why buy through ESell" title="Built around trust, not guesswork" />
+          </Reveal>
+          <Reveal stagger className="mt-8">
+            <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#e6ddc6] bg-[#e6ddc6] sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { icon: <ShieldCheck size={20} />, title: "Products reviewed by ESell", body: "Every listing is checked by our team before it reaches the marketplace." },
+                { icon: <Users size={20} />, title: "Local Namibian support", body: "Based in Windhoek, with a team that understands buyers and sellers nationwide." },
+                { icon: <MessageCircle size={20} />, title: "Easy product enquiries", body: "Reach ESell directly about any listing." },
+                { icon: <Truck size={20} />, title: "Nationwide delivery options", body: "Delivery availability is shown on each listing before you enquire." },
+              ].map((item) => (
+                <div key={item.title} className="bg-[#fffdf7] p-6">
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-yellow text-brand-black">
+                    {item.icon}
+                  </div>
+                  <h3 className="mb-1.5 text-sm font-bold text-brand-black">{item.title}</h3>
+                  <p className="text-xs leading-relaxed text-secondary-text">{item.body}</p>
                 </div>
-                <h3 className="mb-1.5 text-sm font-bold text-brand-black">{item.title}</h3>
-                <p className="text-xs leading-relaxed text-secondary-text">{item.body}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </section>
     </>
