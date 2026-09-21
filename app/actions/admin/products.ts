@@ -5,6 +5,7 @@ import { requireAdmin } from "@/lib/auth/permissions";
 import { prisma } from "@/lib/db/prisma";
 import { productFormSchema, ProductFormValues } from "@/lib/validation/product";
 import { uniqueProductSlug } from "@/lib/utils/slug";
+import { notifyUsersOfNewProduct } from "@/lib/email/new-product-notification";
 
 export interface ProductActionState {
   success?: boolean;
@@ -48,7 +49,14 @@ export async function createProductAction(
       ...buildProductData(data, slug, admin.id),
       ...(sourceSellRequestId ? { sourceSellRequestId } : {}),
     },
+    include: { images: true },
   });
+
+  if (product.published) {
+    await notifyUsersOfNewProduct(product).catch((error) =>
+      console.error("[email] Failed to notify users of new product:", error),
+    );
+  }
 
   if (sourceSellRequestId) {
     await prisma.$transaction([
@@ -156,9 +164,13 @@ export async function deleteProductAction(productId: string) {
 
 export async function toggleProductPublishedAction(productId: string, published: boolean) {
   const admin = await requireAdmin();
+  const existing = await prisma.product.findUniqueOrThrow({ where: { id: productId } });
+  const isFirstPublish = published && !existing.publishedAt;
+
   const product = await prisma.product.update({
     where: { id: productId },
-    data: { published, publishedAt: published ? new Date() : null },
+    data: { published, publishedAt: existing.publishedAt ?? (published ? new Date() : null) },
+    include: { images: true },
   });
   await logActivity(
     admin.id,
@@ -166,6 +178,13 @@ export async function toggleProductPublishedAction(productId: string, published:
     `${published ? "Published" : "Unpublished"} product "${product.name}"`,
     productId,
   );
+
+  if (isFirstPublish) {
+    await notifyUsersOfNewProduct(product).catch((error) =>
+      console.error("[email] Failed to notify users of new product:", error),
+    );
+  }
+
   revalidatePath("/admin/products");
   revalidatePath("/shop");
   revalidatePath("/");

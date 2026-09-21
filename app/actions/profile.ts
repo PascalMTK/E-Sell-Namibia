@@ -10,11 +10,16 @@ import type { FormState } from "@/app/actions/auth";
 const profileSchema = z.object({
   name: z.string().min(2, "Name is required"),
   phone: z.string().optional().or(z.literal("")),
+  receiveProductAlerts: z.boolean().default(false),
 });
 
 export async function updateProfileAction(_prev: FormState, formData: FormData): Promise<FormState> {
   const user = await requireUser();
-  const parsed = profileSchema.safeParse({ name: formData.get("name"), phone: formData.get("phone") });
+  const parsed = profileSchema.safeParse({
+    name: formData.get("name"),
+    phone: formData.get("phone"),
+    receiveProductAlerts: formData.get("receiveProductAlerts") === "on",
+  });
   if (!parsed.success) {
     const fieldErrors: Record<string, string> = {};
     for (const issue of parsed.error.issues) fieldErrors[String(issue.path[0])] = issue.message;
@@ -23,7 +28,11 @@ export async function updateProfileAction(_prev: FormState, formData: FormData):
 
   await prisma.user.update({
     where: { id: user.id },
-    data: { name: parsed.data.name, phone: parsed.data.phone || null },
+    data: {
+      name: parsed.data.name,
+      phone: parsed.data.phone || null,
+      receiveProductAlerts: parsed.data.receiveProductAlerts,
+    },
   });
 
   revalidatePath("/account/profile");

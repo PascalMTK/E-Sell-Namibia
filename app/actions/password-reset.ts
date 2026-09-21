@@ -4,6 +4,7 @@ import crypto from "crypto";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db/prisma";
 import { forgotPasswordSchema, resetPasswordSchema } from "@/lib/validation/auth";
+import { sendPasswordResetEmail } from "@/lib/email/password-reset";
 import type { FormState } from "@/app/actions/auth";
 
 const RESET_TOKEN_TTL_MS = 1000 * 60 * 60; // 1 hour
@@ -30,10 +31,7 @@ export async function requestPasswordResetAction(_prev: FormState, formData: For
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
     const resetLink = `${siteUrl}/reset-password?token=${token}`;
 
-    // No transactional email provider is configured in this environment.
-    // Logging the link keeps the reset flow usable in development; wire up
-    // a real provider (e.g. Resend) here before going to production.
-    console.log(`[password reset] ${user.email}: ${resetLink}`);
+    await sendPasswordResetEmail(user.email, resetLink);
   }
 
   return { success: true };

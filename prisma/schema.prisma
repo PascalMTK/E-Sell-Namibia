@@ -67,14 +67,16 @@ enum AdminActivityType {
 // ---------------------------------------------------------------------------
 
 model User {
-  id           String   @id @default(cuid())
-  name         String
-  email        String   @unique
-  phone        String?
-  passwordHash String
-  role         Role     @default(USER)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id                   String   @id @default(cuid())
+  name                 String
+  email                String   @unique
+  phone                String?
+  passwordHash         String
+  role                 Role     @default(USER)
+  receiveProductAlerts Boolean  @default(true)
+  unsubscribeToken     String   @unique @default(cuid())
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
 
   sellRequests    SellRequest[]
   favorites       Favorite[]

@@ -73,8 +73,20 @@ See `app/actions/sell-requests.ts` (customer submission) and `app/actions/admin/
 - `npm run lint` / `npm run typecheck`
 - `npm run db:push`, `db:migrate`, `db:seed`, `db:generate`
 
+## New product email alerts
+
+When an admin publishes a product for the first time (creating it as published, or toggling a draft to published), every customer with `receiveProductAlerts` enabled gets an email with the product photo, name, price and a link. Customers can opt out from `/account/profile` or via the unsubscribe link in the email footer (`/unsubscribe?token=...`).
+
+This uses [Resend](https://resend.com):
+
+1. Sign up (free tier) and create an API key.
+2. Set `RESEND_API_KEY` in `.env`.
+3. For real deliverability, verify a sending domain in Resend and set `EMAIL_FROM` to an address on it — otherwise the default `onboarding@resend.dev` sandbox sender works for testing.
+
+Without `RESEND_API_KEY` set, sends are skipped and logged to the console instead — nothing breaks.
+
 ## Notes / things to wire up before production
 
-- **Transactional email** is not configured. Password reset links are logged to the server console (`app/actions/password-reset.ts`) — wire up a real provider (e.g. Resend) before shipping.
+- **Transactional email** uses Resend for both new-product alerts and password reset links (see above and `.env.example`). Without an API key, both just log to the console instead of sending.
 - **Rate limiting** for auth and upload routes is not implemented; add it at the edge (e.g. Vercel Firewall / Upstash) before production traffic.
 - Contact details (WhatsApp/phone/email/address) are blank until an admin fills them in at `/admin/settings` — the public "Contact E-Sell" buttons stay disabled/hidden until then, by design (no placeholder numbers are shipped).

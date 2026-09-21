@@ -1,14 +1,22 @@
 "use client";
 
 import { useActionState } from "react";
-import { Input, Label, FieldError } from "@/components/ui/form-field";
+import { Input, Label, FieldError, Checkbox } from "@/components/ui/form-field";
 import { Button } from "@/components/ui/button";
 import { updateProfileAction, changePasswordAction } from "@/app/actions/profile";
 import type { FormState } from "@/app/actions/auth";
 
 const initialState: FormState = {};
 
-export function ProfileDetailsForm({ name, phone }: { name: string; phone: string }) {
+export function ProfileDetailsForm({
+  name,
+  phone,
+  receiveProductAlerts,
+}: {
+  name: string;
+  phone: string;
+  receiveProductAlerts: boolean;
+}) {
   const [state, formAction, isPending] = useActionState(updateProfileAction, initialState);
 
   return (
@@ -22,6 +30,15 @@ export function ProfileDetailsForm({ name, phone }: { name: string; phone: strin
         <Label htmlFor="phone">Phone</Label>
         <Input id="phone" name="phone" type="tel" defaultValue={phone} />
       </div>
+      <label className="flex items-start gap-2.5 text-sm font-semibold text-brand-black">
+        <Checkbox name="receiveProductAlerts" defaultChecked={receiveProductAlerts} className="mt-0.5" />
+        <span>
+          Email me when ESell adds a new product
+          <span className="mt-0.5 block text-xs font-normal text-secondary-text">
+            You can unsubscribe any time from the link in those emails.
+          </span>
+        </span>
+      </label>
       {state?.success && <p className="text-sm font-semibold text-green-700">Profile updated.</p>}
       <Button type="submit" disabled={isPending}>
         {isPending ? "Saving…" : "Save Changes"}

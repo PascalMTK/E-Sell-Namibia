@@ -16,7 +16,11 @@ export default async function ProfilePage() {
       <div>
         <SectionHeading title="Profile" description="Manage your personal details." />
         <Card className="mt-6 p-6">
-          <ProfileDetailsForm name={user.name} phone={user.phone ?? ""} />
+          <ProfileDetailsForm
+            name={user.name}
+            phone={user.phone ?? ""}
+            receiveProductAlerts={user.receiveProductAlerts}
+          />
         </Card>
       </div>
       <div>
