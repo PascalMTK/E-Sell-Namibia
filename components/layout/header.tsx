@@ -1,22 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { ButtonLink } from "@/components/ui/button";
 import { HeaderSearchForm } from "@/components/layout/search-form";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { AccountMenu } from "@/components/layout/account-menu";
+import { getCartItemCount } from "@/lib/data/cart";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/categories", label: "Categories" },
+  { href: "/announcements", label: "Announcements" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
 export async function Header() {
   const session = await auth();
+  const cartCount = await getCartItemCount(session?.user?.id);
 
   return (
     <header className="sticky top-0 z-30 border-b border-brand-yellow bg-white/95 shadow-[0_2px_0_rgba(255,193,7,0.12)] backdrop-blur">
@@ -53,6 +56,18 @@ export async function Header() {
             className="hidden rounded-lg p-2 text-brand-black hover:bg-off-white sm:block"
           >
             <Heart size={18} />
+          </Link>
+          <Link
+            href="/cart"
+            aria-label="Cart"
+            className="relative hidden rounded-lg p-2 text-brand-black hover:bg-off-white sm:block"
+          >
+            <ShoppingCart size={18} />
+            {cartCount > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-yellow px-1 text-[10px] font-extrabold text-brand-black">
+                {cartCount}
+              </span>
+            )}
           </Link>
 
           {session?.user ? (

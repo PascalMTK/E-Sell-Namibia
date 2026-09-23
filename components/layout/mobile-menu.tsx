@@ -9,6 +9,8 @@ const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Shop" },
   { href: "/categories", label: "Categories" },
+  { href: "/cart", label: "My Cart" },
+  { href: "/announcements", label: "Announcements" },
   { href: "/sell", label: "Sell Your Goods" },
   { href: "/about", label: "About Us" },
   { href: "/contact", label: "Contact" },
