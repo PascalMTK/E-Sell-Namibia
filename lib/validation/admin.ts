@@ -63,3 +63,20 @@ export const sellRequestStatusUpdateSchema = z.object({
   ]),
   note: z.string().optional().or(z.literal("")),
 });
+
+export const orderStatusUpdateSchema = z.object({
+  id: z.string().min(1),
+  status: z.enum(["PENDING_PAYMENT", "PAID", "PROCESSING", "COMPLETED", "CANCELLED", "FAILED"]),
+  note: z.string().optional().or(z.literal("")),
+});
+
+export const announcementFormSchema = z.object({
+  title: z.string().min(2, "Title is required"),
+  body: z.string().min(2, "Body is required"),
+  image: z.string().optional().or(z.literal("")),
+  active: z.boolean().default(true),
+  pinned: z.boolean().default(false),
+  startDate: z.string().optional().or(z.literal("")),
+  endDate: z.string().optional().or(z.literal("")),
+});
+export type AnnouncementFormValues = z.infer<typeof announcementFormSchema>;

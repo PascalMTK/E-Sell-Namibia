@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { uploadImage, UploadValidationError } from "@/lib/storage/upload";
 
-const ADMIN_ONLY_FOLDERS = new Set(["products", "team", "banners"]);
+const ADMIN_ONLY_FOLDERS = new Set(["products", "team", "banners", "announcements"]);
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
   if (!(file instanceof File)) {
     return NextResponse.json({ success: false, error: "No file provided." }, { status: 400 });
   }
-  if (!["products", "sell-requests", "team", "banners"].includes(folder)) {
+  if (!["products", "sell-requests", "team", "banners", "announcements"].includes(folder)) {
     return NextResponse.json({ success: false, error: "Invalid upload target." }, { status: 400 });
   }
 
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const url = await uploadImage(file, folder as "products" | "sell-requests" | "team" | "banners");
+    const url = await uploadImage(file, folder as "products" | "sell-requests" | "team" | "banners" | "announcements");
     return NextResponse.json({ success: true, url });
   } catch (error) {
     if (error instanceof UploadValidationError) {

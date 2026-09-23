@@ -13,6 +13,8 @@ import {
   UserSquare2,
   Settings,
   LogOut,
+  ShoppingCart,
+  Megaphone,
 } from "lucide-react";
 import { adminSignOutAction } from "@/app/actions/auth";
 import { cn } from "@/lib/utils/cn";
@@ -21,8 +23,10 @@ const NAV = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard },
   { href: "/admin/products", label: "Products", icon: Package },
   { href: "/admin/sell-requests", label: "Sell Requests", icon: ClipboardList },
+  { href: "/admin/orders", label: "Orders", icon: ShoppingCart },
   { href: "/admin/categories", label: "Categories", icon: Tags },
   { href: "/admin/banners", label: "Banners", icon: ImageIcon },
+  { href: "/admin/announcements", label: "Announcements", icon: Megaphone },
   { href: "/admin/customers", label: "Customers", icon: Users },
   { href: "/admin/team", label: "Team", icon: UserSquare2 },
   { href: "/admin/settings", label: "Settings", icon: Settings },

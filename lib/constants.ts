@@ -44,6 +44,20 @@ export const SORT_OPTIONS = [
   { value: "price-desc", label: "Price: High to Low" },
 ] as const;
 
+export const ORDER_STATUSES = [
+  { value: "PENDING_PAYMENT", label: "Pending Payment" },
+  { value: "PAID", label: "Paid" },
+  { value: "PROCESSING", label: "Processing" },
+  { value: "COMPLETED", label: "Completed" },
+  { value: "CANCELLED", label: "Cancelled" },
+  { value: "FAILED", label: "Failed" },
+] as const;
+
+export const PAYMENT_METHODS = [
+  { value: "CASH_EFT", label: "Cash / EFT" },
+  { value: "CARD_DPO", label: "Pay by Card" },
+] as const;
+
 export const MAX_SELL_REQUEST_IMAGES = 8;
 export const MAX_IMAGE_SIZE_BYTES = 8 * 1024 * 1024; // 8MB
 export const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/png", "image/webp"];

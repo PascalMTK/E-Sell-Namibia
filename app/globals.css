@@ -24,13 +24,13 @@
   --color-brand-charcoal: var(--color-brand-charcoal);
   --color-brand-border: var(--color-brand-border);
   --color-secondary-text: var(--color-secondary-text);
-  --font-sans: var(--font-inter);
+  --font-sans: Inter, Arial, Helvetica, sans-serif;
 }
 
 body {
   background: var(--color-white);
   color: var(--color-brand-black);
-  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
 @keyframes auth-panel-enter {

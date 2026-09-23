@@ -13,7 +13,7 @@ export function assertValidImage(file: File) {
 }
 
 /** Uploads an image to Vercel Blob storage under the given folder and returns its public URL. */
-export async function uploadImage(file: File, folder: "products" | "sell-requests" | "team" | "banners") {
+export async function uploadImage(file: File, folder: "products" | "sell-requests" | "team" | "banners" | "announcements") {
   assertValidImage(file);
   const key = `${folder}/${crypto.randomUUID()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "")}`;
   const blob = await put(key, file, {

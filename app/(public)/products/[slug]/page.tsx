@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ImageGallery } from "@/components/products/image-gallery";
 import { ProductContactCta } from "@/components/products/contact-cta";
 import { FavoriteButton } from "@/components/marketplace/favorite-button";
+import { AddToCartButton } from "@/components/marketplace/add-to-cart-button";
 import { ProductGrid } from "@/components/marketplace/product-grid";
 import { formatNad, calculateDiscountPercent } from "@/lib/utils/currency";
 import { PRODUCT_CONDITIONS, STOCK_STATUSES } from "@/lib/constants";
@@ -139,18 +140,25 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             </div>
           )}
 
-          <div className="mt-7">
+          <div className="mt-7 space-y-3">
             {product.sold ? (
               <div className="rounded-xl border border-gray-200 bg-off-white p-4 text-sm font-semibold text-secondary-text">
                 This item has been sold. Browse similar available products below.
               </div>
             ) : (
-              <ProductContactCta
-                productName={product.name}
-                price={product.price.toString()}
-                whatsappNumber={settings.whatsappNumber}
-                phoneNumber={settings.phoneNumber}
-              />
+              <>
+                <AddToCartButton
+                  productId={product.id}
+                  disabled={product.stockStatus === "OUT_OF_STOCK"}
+                  className="w-full"
+                />
+                <ProductContactCta
+                  productName={product.name}
+                  price={product.price.toString()}
+                  whatsappNumber={settings.whatsappNumber}
+                  phoneNumber={settings.phoneNumber}
+                />
+              </>
             )}
           </div>
 

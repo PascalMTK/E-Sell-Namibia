@@ -20,7 +20,7 @@ export function PhotoUploader({
 }: {
   images: UploadedImage[];
   onChange: (images: UploadedImage[]) => void;
-  folder: "products" | "sell-requests" | "team" | "banners";
+  folder: "products" | "sell-requests" | "team" | "banners" | "announcements";
   maxImages?: number;
   showCoverSelection?: boolean;
 }) {

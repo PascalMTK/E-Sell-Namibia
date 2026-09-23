@@ -6,6 +6,7 @@ import { formatNad, calculateDiscountPercent } from "@/lib/utils/currency";
 import { PRODUCT_CONDITIONS } from "@/lib/constants";
 import { Badge } from "@/components/ui/badge";
 import { FavoriteButton } from "@/components/marketplace/favorite-button";
+import { AddToCartButton } from "@/components/marketplace/add-to-cart-button";
 
 export function ProductCard({
   product,
@@ -56,6 +57,9 @@ export function ProductCard({
         initialFavorited={isFavorited}
         className="absolute right-3 top-3"
       />
+      {!product.sold && (
+        <AddToCartButton productId={product.id} iconOnly className="absolute right-14 top-3" />
+      )}
 
       <div className="flex flex-1 flex-col p-4">
         <Link href={`/products/${product.slug}`}>

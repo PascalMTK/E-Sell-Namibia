@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Box, CheckCircle2, PackageX, Users, ClipboardList, DollarSign } from "lucide-react";
+import { Box, CheckCircle2, PackageX, Users, ClipboardList, DollarSign, ShoppingCart } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { prisma } from "@/lib/db/prisma";
 import { formatNad } from "@/lib/utils/currency";
@@ -17,6 +17,7 @@ export default async function AdminOverviewPage() {
     customers,
     outOfStock,
     soldValueAgg,
+    pendingOrders,
   ] = await Promise.all([
     prisma.product.count(),
     prisma.product.count({ where: { published: true } }),
@@ -25,6 +26,7 @@ export default async function AdminOverviewPage() {
     prisma.user.count({ where: { role: "USER" } }),
     prisma.product.count({ where: { stockStatus: "OUT_OF_STOCK" } }),
     prisma.product.aggregate({ where: { sold: true }, _sum: { price: true } }),
+    prisma.order.count({ where: { status: "PENDING_PAYMENT" } }),
   ]);
 
   const cards = [
@@ -32,6 +34,7 @@ export default async function AdminOverviewPage() {
     { label: "Published Products", value: publishedProducts, icon: CheckCircle2 },
     { label: "Products Sold", value: soldProducts, icon: DollarSign },
     { label: "New Sell Requests", value: newSellRequests, icon: ClipboardList, href: "/admin/sell-requests" },
+    { label: "Pending Orders", value: pendingOrders, icon: ShoppingCart, href: "/admin/orders?status=PENDING_PAYMENT" },
     { label: "Customers", value: customers, icon: Users, href: "/admin/customers" },
     { label: "Out of Stock", value: outOfStock, icon: PackageX },
   ];
