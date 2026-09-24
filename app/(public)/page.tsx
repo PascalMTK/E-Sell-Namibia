@@ -3,6 +3,7 @@ import Image from "next/image";
 import { ArrowRight, MapPin, Search, ShieldCheck, ShoppingBag, Tag, Truck, Users, MessageCircle } from "lucide-react";
 import { Container, SectionHeading } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
+import { HeroBackdrop } from "@/components/ui/page-hero";
 import { ButtonLink } from "@/components/ui/button";
 import { CategoryGrid } from "@/components/marketplace/category-grid";
 import { ProductGrid } from "@/components/marketplace/product-grid";
@@ -60,15 +61,16 @@ export default async function HomePage() {
       )}
 
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-[#eadcae] bg-[#fff9e8]">
+      <section className="relative isolate overflow-hidden border-b border-[#eadcae] bg-[#fff9e8]">
+        <HeroBackdrop />
         <div className="pointer-events-none absolute left-0 top-0 h-full w-2 bg-brand-yellow sm:w-3" />
-        <Container className="grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
-          <div className="hero-copy-enter">
+        <Container className="relative grid grid-cols-1 items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
+          <div className="hero-copy-stagger">
             <p className="mb-5 inline-flex items-center gap-2 border-l-4 border-brand-yellow pl-3 text-xs font-extrabold uppercase tracking-wider text-[#765600]">
               <MapPin size={12} /> Namibia&rsquo;s Buying & Selling Platform
             </p>
             <h1 className="max-w-xl text-4xl font-black leading-[1.05] tracking-[-0.055em] text-brand-black sm:text-5xl lg:text-[3.55rem]">
-              Buying & Selling made easier <span className="bg-brand-yellow px-1 text-brand-black box-decoration-clone">for everyone.</span>
+              Buying & Selling made easier <span className="text-brand-yellow">for everyone.</span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-7 text-[#514c3f]">
               Discover quality new and second-hand products across Namibia, or send us the goods you want to
@@ -100,16 +102,16 @@ export default async function HomePage() {
 
             <div className="mt-8 flex flex-wrap gap-6 text-xs font-semibold text-secondary-text">
               <span className="inline-flex items-center gap-1.5">
-                <MapPin size={14} className="text-amber-600" /> Windhoek, Namibia
+                <MapPin size={14} className="text-brand-yellow" /> Windhoek, Namibia
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <Truck size={14} className="text-amber-600" /> Nationwide Delivery
+                <Truck size={14} className="text-brand-yellow" /> Nationwide Delivery
               </span>
             </div>
           </div>
 
           <div className="hero-media-enter relative">
-            <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#ffc107] lg:mr-4 lg:mb-4">
+            <div className="relative aspect-4/3 overflow-hidden rounded-2xl border-8 border-white shadow-[16px_16px_0_#d99000] lg:mr-4 lg:mb-4">
               <Image
                 src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1200&q=85"
                 alt="Curated goods available through ESell Namibia"
@@ -122,7 +124,7 @@ export default async function HomePage() {
                 <span className="h-2 w-2 bg-brand-yellow" /> Discover your next great find
               </div>
             </div>
-            <div className="absolute -top-4 -left-4 z-10 flex items-center gap-2 rounded-xl border border-[#eadcae] bg-white px-4 py-2.5 shadow-[0_10px_28px_rgba(80,58,0,0.16)] sm:-left-6">
+            <div className="hero-float absolute -top-4 -left-4 z-10 flex items-center gap-2 rounded-xl border border-[#eadcae] bg-white px-4 py-2.5 shadow-[0_10px_28px_rgba(80,58,0,0.16)] sm:-left-6">
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-yellow text-brand-black">
                 <ShieldCheck size={16} />
               </span>
@@ -163,7 +165,7 @@ export default async function HomePage() {
               eyebrow="Explore ESell"
               title="Shop by category"
               action={
-                <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-amber-700">
+                <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-brand-yellow-hover">
                   View all categories <ArrowRight size={14} className="inline" />
                 </Link>
               }
@@ -187,7 +189,7 @@ export default async function HomePage() {
               eyebrow="Handpicked for you"
               title="Featured Products"
               action={
-                <Link href="/shop" className="text-sm font-bold text-brand-black hover:text-amber-700">
+                <Link href="/shop" className="text-sm font-bold text-brand-black hover:text-brand-yellow-hover">
                   Browse marketplace <ArrowRight size={14} className="inline" />
                 </Link>
               }

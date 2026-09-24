@@ -30,7 +30,7 @@ export function TeamCard({ member }: { member: TeamCardData }) {
         )}
       </div>
       <h3 className="text-base font-bold text-brand-black">{member.name}</h3>
-      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-amber-700">{member.position}</p>
+      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-brand-yellow-hover">{member.position}</p>
       {member.bio && <p className="text-xs leading-relaxed text-secondary-text">{member.bio}</p>}
 
       {(member.linkedin || member.twitter || member.email) && (

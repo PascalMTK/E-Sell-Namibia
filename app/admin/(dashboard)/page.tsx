@@ -51,7 +51,7 @@ export default async function AdminOverviewPage() {
           const Icon = card.icon;
           const content = (
             <Card className="flex items-center gap-4 p-6 transition hover:border-brand-yellow-hover">
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-yellow/15 text-amber-700">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-yellow/15 text-brand-yellow-hover">
                 <Icon size={20} />
               </div>
               <div>
@@ -70,7 +70,7 @@ export default async function AdminOverviewPage() {
         })}
 
         <Card className="flex items-center gap-4 p-6">
-          <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-yellow/15 text-amber-700">
+          <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-yellow/15 text-brand-yellow-hover">
             <DollarSign size={20} />
           </div>
           <div>

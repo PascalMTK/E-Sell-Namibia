@@ -75,7 +75,7 @@ export function CartView({ items: initialItems }: { items: CartLineItem[] }) {
             </Link>
             <div className="flex flex-1 flex-col justify-between">
               <div className="flex items-start justify-between gap-2">
-                <Link href={`/products/${item.product.slug}`} className="text-sm font-bold text-brand-black hover:text-amber-700">
+                <Link href={`/products/${item.product.slug}`} className="text-sm font-bold text-brand-black hover:text-brand-yellow-hover">
                   {item.product.name}
                 </Link>
                 <button

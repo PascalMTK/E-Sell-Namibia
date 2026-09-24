@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, MessageCircle, Phone, Clock } from "lucide-react";
-import { Container, SectionHeading } from "@/components/ui/card";
+import { Container } from "@/components/ui/card";
+import { PageHero } from "@/components/ui/page-hero";
 import { ContactForm } from "@/components/contact/contact-form";
 import { LocationMap } from "@/components/contact/location-map";
 import { getSiteSettings } from "@/lib/data/settings";
@@ -14,21 +15,23 @@ export default async function ContactPage() {
   const hasAnyDetail = settings.whatsappNumber || settings.phoneNumber || settings.email || settings.address;
 
   return (
-    <Container className="py-12">
-      <SectionHeading
+    <>
+      <PageHero
         eyebrow="Let's connect"
-        title="Questions? We're here to help"
+        title="Questions? We're"
+        highlight="here to help."
         description="Ask about a product or learn how selling through ESell works."
+        icon={<MessageCircle size={44} />}
       />
-
-      <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <Container className="py-12">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <div className="space-y-4">
           {settings.phoneNumber && (
             <a
               href={toTelHref(settings.phoneNumber)}
               className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4 hover:border-brand-black"
             >
-              <Phone size={18} className="text-amber-600" />
+              <Phone size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">Phone</p>
                 <p className="text-sm font-bold text-brand-black">{settings.phoneNumber}</p>
@@ -42,7 +45,7 @@ export default async function ContactPage() {
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4 hover:border-brand-black"
             >
-              <MessageCircle size={18} className="text-amber-600" />
+              <MessageCircle size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">WhatsApp</p>
                 <p className="text-sm font-bold text-brand-black">{settings.whatsappNumber}</p>
@@ -54,7 +57,7 @@ export default async function ContactPage() {
               href={`mailto:${settings.email}`}
               className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4 hover:border-brand-black"
             >
-              <Mail size={18} className="text-amber-600" />
+              <Mail size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">Email</p>
                 <p className="text-sm font-bold text-brand-black">{settings.email}</p>
@@ -63,7 +66,7 @@ export default async function ContactPage() {
           )}
           {settings.address && (
             <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4">
-              <MapPin size={18} className="text-amber-600" />
+              <MapPin size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">Location</p>
                 <p className="text-sm font-bold text-brand-black">{settings.address}</p>
@@ -72,7 +75,7 @@ export default async function ContactPage() {
           )}
           {settings.businessHours && (
             <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4">
-              <Clock size={18} className="text-amber-600" />
+              <Clock size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">Business Hours</p>
                 <p className="text-sm font-bold text-brand-black">{settings.businessHours}</p>
@@ -94,6 +97,7 @@ export default async function ContactPage() {
           <LocationMap address={settings.address} />
         </div>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

@@ -15,7 +15,7 @@ export function ForgotPasswordForm() {
   if (state?.success) {
     return (
       <div className="text-center">
-        <CheckCircle2 className="mx-auto mb-2 text-amber-600" size={28} />
+        <CheckCircle2 className="mx-auto mb-2 text-brand-yellow" size={28} />
         <p className="text-sm font-semibold text-brand-black">Check your email</p>
         <p className="mt-1 text-xs text-secondary-text">
           If an account exists for that email, we&rsquo;ve sent instructions to reset your password.

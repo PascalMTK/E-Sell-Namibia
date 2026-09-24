@@ -42,7 +42,7 @@ export function FavoriteButton({
         className,
       )}
     >
-      <Heart size={16} fill={favorited ? "#FFC107" : "none"} className={favorited ? "text-brand-yellow-hover" : ""} />
+      <Heart size={16} fill={favorited ? "#d99000" : "none"} className={favorited ? "text-brand-yellow-hover" : ""} />
     </button>
   );
 }

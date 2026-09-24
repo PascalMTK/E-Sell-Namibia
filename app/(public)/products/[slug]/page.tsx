@@ -77,7 +77,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 {formatNad(product.originalPrice.toString())}
               </span>
             )}
-            {product.negotiable && <span className="text-xs font-semibold text-amber-700">Negotiable</span>}
+            {product.negotiable && <span className="text-xs font-semibold text-brand-yellow-hover">Negotiable</span>}
           </div>
 
           <dl className="mt-6 grid grid-cols-2 gap-4 rounded-xl border border-gray-200 bg-off-white p-4 text-sm sm:grid-cols-3">

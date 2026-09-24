@@ -39,7 +39,7 @@ export default async function AccountSellRequestsPage() {
             title="No Sell Requests yet"
             description="Submit an item and ESell's team will review it."
             action={
-              <Link href="/sell" className="text-sm font-bold text-amber-700 hover:underline">
+              <Link href="/sell" className="text-sm font-bold text-brand-yellow-hover hover:underline">
                 Sell Your Goods
               </Link>
             }

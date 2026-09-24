@@ -63,7 +63,7 @@ export default async function AdminProductsPage({ searchParams }: { searchParams
 
       {products.length === 0 && (
         <p className="mt-6 text-center text-sm text-secondary-text">
-          No products yet. <Link href="/admin/products/new" className="font-semibold text-amber-700">Add your first product</Link>.
+          No products yet. <Link href="/admin/products/new" className="font-semibold text-brand-yellow-hover">Add your first product</Link>.
         </p>
       )}
     </div>

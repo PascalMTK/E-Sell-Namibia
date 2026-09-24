@@ -92,7 +92,7 @@ export default async function AdminOrdersPage({
                   </td>
                   <td className="p-3 text-secondary-text">{order.createdAt.toLocaleDateString("en-NA")}</td>
                   <td className="p-3 text-right">
-                    <Link href={`/admin/orders/${order.id}`} className="text-xs font-bold text-amber-700 hover:underline">
+                    <Link href={`/admin/orders/${order.id}`} className="text-xs font-bold text-brand-yellow-hover hover:underline">
                       View
                     </Link>
                   </td>

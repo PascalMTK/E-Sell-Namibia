@@ -23,7 +23,7 @@ export default async function AccountOverviewPage() {
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <Link href="/account/sell-requests">
           <Card className="flex items-center gap-4 p-6 transition hover:border-brand-yellow-hover">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow/15 text-amber-700">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow-hover">
               <ClipboardList size={20} />
             </div>
             <div>
@@ -34,7 +34,7 @@ export default async function AccountOverviewPage() {
         </Link>
         <Link href="/account/favorites">
           <Card className="flex items-center gap-4 p-6 transition hover:border-brand-yellow-hover">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow/15 text-amber-700">
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow-hover">
               <Heart size={20} />
             </div>
             <div>

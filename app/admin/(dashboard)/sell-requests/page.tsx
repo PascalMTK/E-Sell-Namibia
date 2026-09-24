@@ -109,7 +109,7 @@ export default async function AdminSellRequestsPage({
                     </Badge>
                   </td>
                   <td className="p-3 text-right">
-                    <Link href={`/admin/sell-requests/${req.id}`} className="text-xs font-bold text-amber-700 hover:underline">
+                    <Link href={`/admin/sell-requests/${req.id}`} className="text-xs font-bold text-brand-yellow-hover hover:underline">
                       View
                     </Link>
                   </td>

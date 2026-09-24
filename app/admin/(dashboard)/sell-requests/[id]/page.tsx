@@ -76,7 +76,7 @@ export default async function AdminSellRequestDetailPage({ params }: { params: P
               <dt className="text-xs text-secondary-text">Expected Price</dt>
               <dd className="font-semibold text-brand-black">
                 {sellRequest.expectedPrice ? formatNad(sellRequest.expectedPrice.toString()) : "Not specified"}{" "}
-                {sellRequest.negotiable && <span className="text-xs text-amber-700">(negotiable)</span>}
+                {sellRequest.negotiable && <span className="text-xs text-brand-yellow-hover">(negotiable)</span>}
               </dd>
             </div>
             <div>

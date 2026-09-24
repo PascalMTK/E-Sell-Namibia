@@ -63,7 +63,7 @@ export function ProductCard({
 
       <div className="flex flex-1 flex-col p-4">
         <Link href={`/products/${product.slug}`}>
-          <h3 className="mb-1.5 line-clamp-2 min-h-10 text-sm font-bold text-brand-black transition group-hover:text-amber-700">
+          <h3 className="mb-1.5 line-clamp-2 min-h-10 text-sm font-bold text-brand-black transition group-hover:text-brand-yellow-hover">
             {product.name}
           </h3>
         </Link>

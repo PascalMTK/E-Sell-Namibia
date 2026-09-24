@@ -20,7 +20,7 @@ function buildEmailHtml(product: NotifiableProduct, siteUrl: string, unsubscribe
   <div style="font-family:Arial,Helvetica,sans-serif;background:#f8f9fa;padding:24px;">
     <div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
       <div style="background:#1a1a1a;padding:20px 24px;">
-        <span style="display:inline-block;background:#ffc107;color:#1a1a1a;font-weight:800;font-size:14px;padding:6px 10px;border-radius:6px;">ESell Namibia</span>
+        <span style="display:inline-block;background:#d99000;color:#1a1a1a;font-weight:800;font-size:14px;padding:6px 10px;border-radius:6px;">ESell Namibia</span>
       </div>
       ${cover ? `<img src="${cover}" alt="${product.name}" style="width:100%;height:260px;object-fit:cover;display:block;" />` : ""}
       <div style="padding:24px;">
@@ -28,7 +28,7 @@ function buildEmailHtml(product: NotifiableProduct, siteUrl: string, unsubscribe
         <h1 style="margin:0 0 8px;font-size:20px;line-height:1.3;color:#1a1a1a;">${product.name}</h1>
         <p style="margin:0 0 4px;font-size:22px;font-weight:800;color:#1a1a1a;">${formatNad(product.price.toString())}</p>
         <p style="margin:0 0 20px;font-size:13px;color:#666666;">${product.location}</p>
-        <a href="${productUrl}" style="display:inline-block;background:#ffc107;color:#1a1a1a;font-weight:800;font-size:14px;padding:12px 22px;border-radius:8px;text-decoration:none;">View Product</a>
+        <a href="${productUrl}" style="display:inline-block;background:#d99000;color:#1a1a1a;font-weight:800;font-size:14px;padding:12px 22px;border-radius:8px;text-decoration:none;">View Product</a>
       </div>
       <div style="padding:16px 24px;border-top:1px solid #e5e7eb;">
         <p style="margin:0;font-size:11px;color:#9ca3af;">

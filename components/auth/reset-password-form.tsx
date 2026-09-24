@@ -16,9 +16,9 @@ export function ResetPasswordForm({ token }: { token: string }) {
   if (state?.success) {
     return (
       <div className="text-center">
-        <CheckCircle2 className="mx-auto mb-2 text-amber-600" size={28} />
+        <CheckCircle2 className="mx-auto mb-2 text-brand-yellow" size={28} />
         <p className="text-sm font-semibold text-brand-black">Password updated</p>
-        <Link href="/login" className="mt-3 inline-block text-xs font-semibold text-amber-700 hover:underline">
+        <Link href="/login" className="mt-3 inline-block text-xs font-semibold text-brand-yellow-hover hover:underline">
           Continue to login
         </Link>
       </div>

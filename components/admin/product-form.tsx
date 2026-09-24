@@ -167,7 +167,7 @@ export function ProductForm({
             </div>
           </div>
           {discount && (
-            <p className="mt-2 text-xs font-semibold text-amber-700">
+            <p className="mt-2 text-xs font-semibold text-brand-yellow-hover">
               Customers will see {formatNad(price || 0)} marked down {discount}% from {formatNad(originalPrice || 0)}.
             </p>
           )}

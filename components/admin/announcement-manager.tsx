@@ -98,7 +98,7 @@ export function AnnouncementManager({ announcements }: { announcements: Announce
             <div className="p-4">
               <div className="flex items-start justify-between gap-2">
                 <p className="font-bold text-brand-black">{announcement.title}</p>
-                {announcement.pinned && <Pin size={14} className="mt-0.5 shrink-0 text-amber-600" />}
+                {announcement.pinned && <Pin size={14} className="mt-0.5 shrink-0 text-brand-yellow" />}
               </div>
               <p className="mt-1 line-clamp-2 text-xs text-secondary-text">{announcement.body}</p>
               <div className="mt-2">

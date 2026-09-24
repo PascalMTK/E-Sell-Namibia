@@ -32,7 +32,7 @@ export default async function UnsubscribePage({
   return (
     <AuthCard title="You're unsubscribed">
       <div className="flex flex-col items-center gap-3 text-center">
-        <CheckCircle2 className="text-amber-600" size={28} />
+        <CheckCircle2 className="text-brand-yellow" size={28} />
         <p className="text-sm text-secondary-text">
           {user.email} will no longer receive new product alert emails from ESell Namibia. You can turn these
           back on any time from your account profile.

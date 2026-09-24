@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { Megaphone, Pin } from "lucide-react";
-import { Container, SectionHeading, EmptyState } from "@/components/ui/card";
+import { Container, EmptyState } from "@/components/ui/card";
+import { PageHero } from "@/components/ui/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { getActivePublicAnnouncements } from "@/lib/data/announcements";
 import { cn } from "@/lib/utils/cn";
@@ -19,10 +20,16 @@ export default async function AnnouncementsPage({
   const { items, page, pageCount } = await getActivePublicAnnouncements(sp.page ? Number(sp.page) : 1);
 
   return (
-    <Container className="py-10">
-      <SectionHeading eyebrow="Stay in the loop" title="Announcements" description="News and updates from ESell Namibia." />
-
-      <div className="mt-8">
+    <>
+      <PageHero
+        eyebrow="Stay in the loop"
+        title="Latest"
+        highlight="announcements."
+        description="News and updates from ESell Namibia."
+        icon={<Megaphone size={44} />}
+      />
+      <Container className="py-10">
+      <div>
         {items.length === 0 ? (
           <EmptyState icon={<Megaphone size={36} />} title="No announcements right now" description="Check back soon." />
         ) : (
@@ -69,6 +76,7 @@ export default async function AnnouncementsPage({
           })}
         </nav>
       )}
-    </Container>
+      </Container>
+    </>
   );
 }

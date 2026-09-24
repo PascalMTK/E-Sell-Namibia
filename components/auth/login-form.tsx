@@ -24,7 +24,7 @@ export function LoginForm({ redirectTo = "/account" }: { redirectTo?: string }) 
       </div>
       {state?.error && <p className="text-sm font-semibold text-red-600">{state.error}</p>}
       <div className="flex items-center justify-between text-xs">
-        <Link href="/forgot-password" className="font-semibold text-amber-700 hover:underline">
+        <Link href="/forgot-password" className="font-semibold text-brand-yellow-hover hover:underline">
           Forgot password?
         </Link>
       </div>
@@ -33,7 +33,7 @@ export function LoginForm({ redirectTo = "/account" }: { redirectTo?: string }) 
       </Button>
       <p className="pt-4 text-center text-xs text-secondary-text">
         Don&rsquo;t have an account?{" "}
-        <Link href="/register" className="font-semibold text-amber-700 hover:underline">
+        <Link href="/register" className="font-semibold text-brand-yellow-hover hover:underline">
           Create one
         </Link>
       </p>

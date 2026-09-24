@@ -100,7 +100,7 @@ export function PhotoUploader({
         onKeyDown={(e) => e.key === "Enter" && inputRef.current?.click()}
         className="flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-gray-300 bg-off-white px-6 py-10 text-center transition hover:border-brand-yellow-hover"
       >
-        {uploading ? <Loader2 className="animate-spin text-amber-600" size={24} /> : <UploadCloud className="text-amber-600" size={24} />}
+        {uploading ? <Loader2 className="animate-spin text-brand-yellow" size={24} /> : <UploadCloud className="text-brand-yellow" size={24} />}
         <p className="text-sm font-semibold text-brand-black">
           {uploading ? "Uploading…" : "Drag & drop photos, or click to browse"}
         </p>

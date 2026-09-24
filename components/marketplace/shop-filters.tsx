@@ -130,7 +130,7 @@ export function ShopFilters({ categories }: { categories: CategoryOption[] }) {
       </div>
 
       {hasFilters && (
-        <button onClick={clearAll} className="text-xs font-semibold text-amber-700 hover:underline">
+        <button onClick={clearAll} className="text-xs font-semibold text-brand-yellow-hover hover:underline">
           Clear all filters
         </button>
       )}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CheckCircle2, MapPin, PackageSearch, ShieldCheck, Truck } from "lucide-react";
 import { Container, SectionHeading, EmptyState } from "@/components/ui/card";
+import { PageHero } from "@/components/ui/page-hero";
 import { ButtonLink } from "@/components/ui/button";
 import { TeamCard } from "@/components/team/team-card";
 import { getActiveTeamMembers } from "@/lib/data/team";
@@ -31,14 +32,15 @@ export default async function AboutPage() {
 
   return (
     <>
+      <PageHero
+        eyebrow="About ESell Namibia"
+        title="Namibia's buying and"
+        highlight="selling platform."
+        description="ESell Namibia connects buyers and sellers across the country, with every listing reviewed and managed by our team before it goes live."
+        icon={<ShieldCheck size={44} />}
+      />
       <Container className="py-12">
-        <SectionHeading
-          eyebrow="About ESell Namibia"
-          title="Namibia's buying and selling platform"
-          description="ESell Namibia connects buyers and sellers across the country, with every listing reviewed and managed by our team before it goes live."
-        />
-
-        <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-xl border border-gray-200 bg-off-white p-6">
             <h2 className="mb-2 text-sm font-bold text-brand-black">How buying works</h2>
             <p className="text-sm text-secondary-text">
@@ -57,10 +59,10 @@ export default async function AboutPage() {
 
         <div className="mt-6 flex flex-wrap gap-6 text-xs font-semibold text-secondary-text">
           <span className="inline-flex items-center gap-1.5">
-            <MapPin size={14} className="text-amber-600" /> Based in Windhoek, Namibia
+            <MapPin size={14} className="text-brand-yellow" /> Based in Windhoek, Namibia
           </span>
           <span className="inline-flex items-center gap-1.5">
-            <Truck size={14} className="text-amber-600" /> Nationwide delivery options
+            <Truck size={14} className="text-brand-yellow" /> Nationwide delivery options
           </span>
         </div>
       </Container>
@@ -71,7 +73,7 @@ export default async function AboutPage() {
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {steps.map((step) => (
               <div key={step.title} className="rounded-xl border border-gray-200 bg-white p-6">
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow/15 text-amber-700">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow-hover">
                   {step.icon}
                 </div>
                 <h3 className="mb-1.5 text-sm font-bold text-brand-black">{step.title}</h3>

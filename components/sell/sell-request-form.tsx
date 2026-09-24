@@ -72,7 +72,7 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
   if (submitted) {
     return (
       <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center shadow-sm">
-        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-yellow/15 text-amber-600">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-yellow/15 text-brand-yellow">
           <CheckCircle2 size={28} />
         </div>
         <h2 className="text-2xl font-extrabold text-brand-black">Thank you!</h2>
@@ -94,7 +94,7 @@ export function SellRequestForm({ categories }: { categories: { id: string; name
           <li
             key={label}
             className={`rounded-full px-3 py-1.5 ${
-              i === step ? "bg-brand-black text-white" : i < step ? "bg-brand-yellow/20 text-amber-700" : "bg-off-white text-secondary-text"
+              i === step ? "bg-brand-black text-white" : i < step ? "bg-brand-yellow/20 text-brand-yellow-hover" : "bg-off-white text-secondary-text"
             }`}
           >
             {i + 1}. {label}
