@@ -17,7 +17,7 @@ export default async function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Let's connect"
+        eyebrow="Customer support"
         title="Questions? We're"
         highlight="here to help."
         description="Ask about a product or learn how selling through ESell works."

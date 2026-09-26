@@ -1,8 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Form from "next/form";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
 import { useState } from "react";
+import { cn } from "@/lib/utils/cn";
 
 export function HeaderSearchForm({ className }: { className?: string }) {
   const router = useRouter();
@@ -45,5 +47,35 @@ export function HeaderSearchForm({ className }: { className?: string }) {
         </form>
       )}
     </>
+  );
+}
+
+/** Always-visible search bar for the header on tablet and desktop. */
+export function HeaderSearchBar({ className }: { className?: string }) {
+  const searchParams = useSearchParams();
+
+  return (
+    <Form action="/shop" role="search" className={cn("group relative flex items-center", className)}>
+      <Search
+        size={17}
+        aria-hidden="true"
+        className="pointer-events-none absolute left-3.5 text-secondary-text transition-colors group-focus-within:text-brand-yellow-hover"
+      />
+      <input
+        key={searchParams.get("q") ?? ""}
+        name="q"
+        type="search"
+        defaultValue={searchParams.get("q") ?? ""}
+        placeholder="Search phones, furniture, electronics…"
+        aria-label="Search products"
+        className="h-11 w-full min-w-0 rounded-full border border-gray-200 bg-off-white pl-10 pr-28 text-sm text-brand-black placeholder:text-secondary-text/80 transition focus:border-brand-yellow focus:bg-white focus:outline-none focus:ring-4 focus:ring-brand-yellow/15"
+      />
+      <button
+        type="submit"
+        className="absolute right-1 top-1 bottom-1 rounded-full bg-brand-black px-5 text-xs font-bold uppercase tracking-wider text-white transition hover:bg-brand-yellow hover:text-brand-black"
+      >
+        Search
+      </button>
+    </Form>
   );
 }

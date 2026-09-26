@@ -1,91 +1,82 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart, Truck, User } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { ButtonLink } from "@/components/ui/button";
-import { HeaderSearchForm } from "@/components/layout/search-form";
+import { HeaderSearchBar, HeaderSearchForm } from "@/components/layout/search-form";
 import { MobileMenu } from "@/components/layout/mobile-menu";
 import { AccountMenu } from "@/components/layout/account-menu";
+import { NavLinks } from "@/components/layout/nav-links";
 import { getCartItemCount } from "@/lib/data/cart";
 
-const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/categories", label: "Categories" },
-  { href: "/announcements", label: "Announcements" },
-  { href: "/about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
-];
+const ICON_LINK = "relative flex h-10 w-10 items-center justify-center rounded-full text-brand-black transition hover:bg-off-white";
 
 export async function Header() {
   const session = await auth();
   const cartCount = await getCartItemCount(session?.user?.id);
 
   return (
-    <header className="sticky top-0 z-30 border-b border-brand-yellow bg-white/95 shadow-[0_2px_0_rgba(217,144,0,0.12)] backdrop-blur">
-      <div className="mx-auto flex min-h-18 max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:min-h-20 lg:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] xl:gap-6">
-        <Link href="/" className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3" aria-label="ESell Namibia home">
+    <header className="sticky top-0 z-30 border-b border-brand-yellow/60 bg-white/95 shadow-[0_2px_0_rgba(217,144,0,0.12)] backdrop-blur">
+      {/* Main row: logo · centered navigation · actions */}
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-6 lg:h-18 lg:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] xl:gap-6">
+        <Link href="/" className="flex shrink-0 items-center gap-2 justify-self-start sm:gap-2.5" aria-label="ESell Namibia home">
           <Image src="/logo.png" alt="ESell" width={474} height={193} className="h-8 w-auto sm:h-9" priority />
-          <span className="leading-tight">
-            <span className="block text-sm font-extrabold tracking-widest text-brand-black uppercase sm:text-base">
-              Namibia
-            </span>
-            <span className="hidden whitespace-nowrap text-[9px] font-semibold uppercase tracking-wider text-secondary-text sm:block">
-              Windhoek · Nationwide Delivery
-            </span>
-          </span>
+          <span className="text-sm font-extrabold uppercase tracking-widest text-brand-black sm:text-base">Namibia</span>
         </Link>
 
-        <nav aria-label="Main navigation" className="hidden items-center justify-center gap-5 xl:flex 2xl:gap-7">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="whitespace-nowrap text-sm font-semibold text-brand-black/80 transition hover:text-brand-black"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden h-full min-w-0 lg:flex lg:flex-1 lg:justify-center xl:flex-none">
+          <NavLinks />
+        </div>
 
-        <div className="flex items-center justify-end gap-1 sm:gap-2">
-          <HeaderSearchForm className="hidden rounded-lg p-2 text-brand-black hover:bg-off-white sm:block" />
-          <Link
-            href="/account/favorites"
-            aria-label="Favorites"
-            className="hidden rounded-lg p-2 text-brand-black hover:bg-off-white sm:block"
-          >
-            <Heart size={18} />
+        <div className="flex shrink-0 items-center justify-self-end gap-0.5 sm:gap-1">
+          <HeaderSearchForm className={`${ICON_LINK} md:hidden`} />
+          <Link href="/account/favorites" aria-label="Favorites" title="Favorites" className={`${ICON_LINK} hidden sm:flex`}>
+            <Heart size={19} />
           </Link>
-          <Link
-            href="/cart"
-            aria-label="Cart"
-            className="relative hidden rounded-lg p-2 text-brand-black hover:bg-off-white sm:block"
-          >
-            <ShoppingCart size={18} />
+          <Link href="/cart" aria-label={`Cart (${cartCount} items)`} title="Cart" className={ICON_LINK}>
+            <ShoppingCart size={19} />
             {cartCount > 0 && (
-              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand-yellow px-1 text-[10px] font-extrabold text-brand-black">
-                {cartCount}
+              <span className="absolute right-0 top-0 flex h-4.5 min-w-4.5 items-center justify-center rounded-full bg-brand-yellow px-1 text-[10px] font-extrabold text-brand-black ring-2 ring-white">
+                {cartCount > 99 ? "99+" : cartCount}
               </span>
             )}
           </Link>
 
-          {session?.user ? (
-            <AccountMenu name={session.user.name ?? session.user.email ?? "Account"} />
-          ) : (
-            <Link
-              href="/login"
-              className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-brand-black hover:bg-off-white sm:block"
-            >
-              Login
-            </Link>
-          )}
+          <div className="hidden sm:block">
+            {session?.user ? (
+              <AccountMenu name={session.user.name ?? session.user.email ?? "Account"} />
+            ) : (
+              <Link
+                href="/login"
+                aria-label="Login"
+                className="flex h-10 items-center gap-1.5 rounded-full px-2.5 text-sm font-semibold text-brand-black transition hover:bg-off-white"
+              >
+                <User size={19} />
+                <span className="hidden 2xl:inline">Login</span>
+              </Link>
+            )}
+          </div>
 
-          <ButtonLink href="/sell" size="sm" className="hidden sm:inline-flex">
+          <ButtonLink href="/sell" size="md" className="ml-2 hidden rounded-full whitespace-nowrap lg:inline-flex">
             Sell Your Goods
           </ButtonLink>
 
           <MobileMenu isAuthenticated={Boolean(session?.user)} />
+        </div>
+      </div>
+
+      {/* Search row (tablet & desktop) */}
+      <div className="hidden border-t border-gray-100 bg-off-white/60 md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-6 px-6 py-2.5 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,42rem)_minmax(0,1fr)] lg:px-8">
+          <span aria-hidden="true" className="hidden lg:block" />
+          <Suspense fallback={<div className="h-11 w-full max-w-2xl" />}>
+            <HeaderSearchBar className="w-full max-w-2xl" />
+          </Suspense>
+          <p className="hidden items-center gap-2 whitespace-nowrap text-xs font-semibold text-secondary-text lg:flex lg:justify-self-end">
+            <Truck size={15} className="text-brand-yellow" />
+            Windhoek · Nationwide Delivery
+          </p>
         </div>
       </div>
     </header>

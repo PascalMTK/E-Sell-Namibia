@@ -49,7 +49,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
   return (
     <Container className="py-10">
       <SectionHeading
-        eyebrow="Handpicked for you"
+        eyebrow="All listings"
         title="Explore the marketplace"
         description={`${total} listing${total === 1 ? "" : "s"} reviewed and published by ESell Namibia.`}
       />

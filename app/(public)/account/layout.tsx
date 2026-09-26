@@ -15,7 +15,7 @@ export default async function AccountLayout({ children }: { children: React.Reac
 
   return (
     <Container className="grid grid-cols-1 gap-8 py-10 lg:grid-cols-[220px_1fr]">
-      <aside className="lg:sticky lg:top-24 lg:self-start">
+      <aside className="lg:sticky lg:top-40 lg:self-start">
         <nav className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
           {links.map((link) => (
             <Link

@@ -142,8 +142,8 @@ export default async function HomePage() {
         <section className="bg-brand-deep-black py-14">
           <Container>
             <Reveal className="mb-8 text-center">
-              <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-yellow">
-                Interactive Showcase
+              <p className="mb-1.5 text-sm font-semibold text-brand-yellow">
+                Interactive showcase
               </p>
               <h2 className="text-2xl font-extrabold text-white sm:text-3xl">Hover to explore</h2>
               <p className="mx-auto mt-2 max-w-md text-sm text-gray-400">
@@ -162,7 +162,7 @@ export default async function HomePage() {
         <Container>
           <Reveal>
             <SectionHeading
-              eyebrow="Explore ESell"
+              eyebrow="Categories"
               title="Shop by category"
               action={
                 <Link href="/categories" className="text-sm font-bold text-brand-black hover:text-brand-yellow-hover">
@@ -186,7 +186,7 @@ export default async function HomePage() {
         <Container>
           <Reveal>
             <SectionHeading
-              eyebrow="Handpicked for you"
+              eyebrow="Featured"
               title="Featured Products"
               action={
                 <Link href="/shop" className="text-sm font-bold text-brand-black hover:text-brand-yellow-hover">
@@ -228,7 +228,7 @@ export default async function HomePage() {
         <div className="absolute inset-y-0 right-0 hidden w-1/2 bg-brand-yellow lg:block" />
         <Container className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
           <Reveal className="relative z-10">
-            <p className="mb-3 text-xs font-bold uppercase tracking-widest text-brand-yellow">
+            <p className="mb-2 text-sm font-semibold text-brand-yellow">
               Have something to sell?
             </p>
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
@@ -273,7 +273,7 @@ export default async function HomePage() {
       <section className="py-16">
         <Container>
           <Reveal>
-            <SectionHeading eyebrow="Why buy through ESell" title="Built around trust, not guesswork" />
+            <SectionHeading eyebrow="Why ESell" title="Built around trust, not guesswork" />
           </Reveal>
           <Reveal stagger className="mt-8">
             <div className="grid grid-cols-1 gap-px overflow-hidden rounded-xl border border-[#e6ddc6] bg-[#e6ddc6] sm:grid-cols-2 lg:grid-cols-4">

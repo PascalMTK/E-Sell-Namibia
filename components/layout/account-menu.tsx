@@ -24,10 +24,10 @@ export function AccountMenu({ name }: { name: string }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        className="flex items-center gap-1.5 rounded-lg p-2 text-brand-black hover:bg-off-white"
+        className="flex h-10 items-center gap-1.5 rounded-full px-2.5 text-brand-black transition hover:bg-off-white"
       >
-        <User size={18} />
-        <span className="hidden text-sm font-semibold lg:inline">{name.split(" ")[0]}</span>
+        <User size={19} />
+        <span className="hidden max-w-24 truncate text-sm font-semibold 2xl:inline">{name.split(" ")[0]}</span>
       </button>
       {open && (
         <div

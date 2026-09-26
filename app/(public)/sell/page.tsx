@@ -12,7 +12,7 @@ export default async function SellPage() {
   return (
     <Container className="max-w-3xl py-12">
       <div className="mb-8 text-center">
-        <p className="mb-2 text-xs font-bold uppercase tracking-widest text-brand-yellow-hover">Sell through ESell</p>
+        <p className="mb-1.5 text-sm font-semibold text-[#8a6500]">Sell through ESell</p>
         <h1 className="text-3xl font-extrabold tracking-tight text-brand-black sm:text-4xl">
           Sell Your Goods Through ESell
         </h1>

@@ -22,7 +22,7 @@ export default async function AnnouncementsPage({
   return (
     <>
       <PageHero
-        eyebrow="Stay in the loop"
+        eyebrow="News and updates"
         title="Latest"
         highlight="announcements."
         description="News and updates from ESell Namibia."

@@ -12,7 +12,7 @@ export default async function CategoriesPage() {
   return (
     <Container className="py-12">
       <SectionHeading
-        eyebrow="Browse ESell"
+        eyebrow="Browse by category"
         title="All categories"
         description="Find electronics, vehicles, furniture, fashion and more from ESell Namibia's reviewed listings."
       />

@@ -33,7 +33,7 @@ export default async function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About ESell Namibia"
+        eyebrow="Our story"
         title="Namibia's buying and"
         highlight="selling platform."
         description="ESell Namibia connects buyers and sellers across the country, with every listing reviewed and managed by our team before it goes live."
@@ -69,7 +69,7 @@ export default async function AboutPage() {
 
       <section id="how-it-works" className="border-y border-gray-100 bg-off-white py-14">
         <Container>
-          <SectionHeading eyebrow="Simple by design" title="Why ESell manages every listing" />
+          <SectionHeading eyebrow="How it works" title="Why ESell manages every listing" />
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {steps.map((step) => (
               <div key={step.title} className="rounded-xl border border-gray-200 bg-white p-6">
@@ -86,7 +86,7 @@ export default async function AboutPage() {
 
       <section id="team" className="py-14">
         <Container>
-          <SectionHeading eyebrow="The people behind ESell" title="Meet the ESell Namibia team" />
+          <SectionHeading eyebrow="Our team" title="Meet the ESell Namibia team" />
           <div className="mt-8">
             {team.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

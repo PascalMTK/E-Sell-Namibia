@@ -33,10 +33,9 @@ export function PageHero({
       <Container className="relative flex items-center justify-between gap-8 py-14 lg:py-20">
         <div className="max-w-2xl">
           <p
-            className="hero-rise mb-4 flex items-center gap-2.5 text-xs font-extrabold uppercase tracking-widest text-[#8a6500]"
+            className="hero-rise mb-4 inline-flex rounded-full border border-[#eadcae] bg-white/80 px-3.5 py-1 text-sm font-semibold text-[#8a6500]"
             style={{ "--d": "0ms" } as React.CSSProperties}
           >
-            <span className="hero-bar h-0.5 w-8 bg-brand-yellow" />
             {eyebrow}
           </p>
           <h1
@@ -45,7 +44,6 @@ export function PageHero({
           >
             {title} {highlight && <span className="text-brand-yellow">{highlight}</span>}
           </h1>
-          <span className="hero-bar mt-5 block h-1 w-24 rounded-full bg-brand-yellow" />
           {description && (
             <p
               className="hero-rise mt-5 max-w-xl text-base leading-7 text-[#514c3f]"
