@@ -9,6 +9,13 @@ import { getActiveTeamMembers } from "@/lib/data/team";
 export const metadata: Metadata = { title: "About Us" };
 export const dynamic = "force-dynamic";
 
+// Sample portraits for local design previews, replaced by uploaded team photos.
+const previewPortraits = [
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&h=900&q=85",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&h=900&q=85",
+  "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&h=900&q=85",
+];
+
 const steps = [
   {
     icon: <PackageSearch size={20} />,
@@ -90,8 +97,13 @@ export default async function AboutPage() {
           <div className="mt-8">
             {team.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {team.map((member) => (
-                  <TeamCard key={member.id} member={member} />
+                {team.map((member, index) => (
+                  <TeamCard key={member.id} member={{
+                    ...member,
+                    photo: member.photo || (process.env.NODE_ENV === "development"
+                      ? previewPortraits[index % previewPortraits.length]
+                      : null),
+                  }} />
                 ))}
               </div>
             ) : (

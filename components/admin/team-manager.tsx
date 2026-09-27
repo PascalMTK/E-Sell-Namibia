@@ -8,7 +8,7 @@ import { Dialog } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input, Textarea, Label, Checkbox } from "@/components/ui/form-field";
 import { Badge } from "@/components/ui/badge";
-import { PhotoUploader } from "@/components/sell/photo-uploader";
+import { TeamPhotoEditor } from "@/components/admin/team-photo-editor";
 import { useToast } from "@/components/ui/toast";
 import {
   createTeamMemberAction,
@@ -36,21 +36,26 @@ export function TeamManager({ members }: { members: TeamRow[] }) {
   const [editing, setEditing] = useState<TeamRow | null>(null);
   const [showDialog, setShowDialog] = useState(false);
   const [photo, setPhoto] = useState<string>("");
+  const [editingPhoto, setEditingPhoto] = useState(false);
+  const [saving, setSaving] = useState(false);
 
   function openCreate() {
     setEditing(null);
     setPhoto("");
+    setEditingPhoto(false);
     setShowDialog(true);
   }
 
   function openEdit(member: TeamRow) {
     setEditing(member);
     setPhoto(member.photo ?? "");
+    setEditingPhoto(false);
     setShowDialog(true);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (editingPhoto || saving) return;
     const form = new FormData(e.currentTarget);
     const payload = {
       name: String(form.get("name") || ""),
@@ -63,7 +68,9 @@ export function TeamManager({ members }: { members: TeamRow[] }) {
       active: form.get("active") === "on",
     };
 
-    const result = editing
+    setSaving(true);
+    try {
+      const result = editing
       ? await updateTeamMemberAction(editing.id, payload)
       : await createTeamMemberAction(payload);
 
@@ -73,6 +80,11 @@ export function TeamManager({ members }: { members: TeamRow[] }) {
       router.refresh();
     } else {
       showToast({ kind: "error", title: "Error", message: result.error });
+    }
+    } catch {
+      showToast({ kind: "error", title: "Could not save", message: "Your changes are still here. Please try again." });
+    } finally {
+      setSaving(false);
     }
   }
 
@@ -123,16 +135,12 @@ export function TeamManager({ members }: { members: TeamRow[] }) {
         ))}
       </div>
 
-      <Dialog open={showDialog} onClose={() => setShowDialog(false)} title={editing ? "Edit Team Member" : "Add Team Member"}>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <Dialog open={showDialog} onClose={() => { if (!saving) setShowDialog(false); }} title={editing ? "Edit Team Member" : "Add Team Member"}>
+        {showDialog && <form onSubmit={handleSubmit} className="space-y-4">
+          <fieldset disabled={saving} className="space-y-4">
           <div>
             <Label>Photo</Label>
-            <PhotoUploader
-              images={photo ? [{ url: photo }] : []}
-              onChange={(imgs) => setPhoto(imgs[0]?.url ?? "")}
-              folder="team"
-              maxImages={1}
-            />
+            <TeamPhotoEditor photo={photo} onChange={setPhoto} onEditingChange={setEditingPhoto} />
           </div>
           <div>
             <Label htmlFor="name">Name *</Label>
@@ -164,10 +172,12 @@ export function TeamManager({ members }: { members: TeamRow[] }) {
             <Checkbox name="active" defaultChecked={editing?.active ?? true} />
             Active
           </label>
-          <Button type="submit" className="w-full" disabled={isPending}>
-            {editing ? "Save Changes" : "Add Member"}
+          {editingPhoto && <p className="text-xs text-secondary-text">Apply or cancel the photo crop before saving.</p>}
+          <Button type="submit" className="w-full" disabled={isPending || saving || editingPhoto}>
+            {saving ? "Saving..." : editing ? "Save Changes" : "Add Member"}
           </Button>
-        </form>
+          </fieldset>
+        </form>}
       </Dialog>
     </div>
   );
