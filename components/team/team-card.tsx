@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowUpRight, Linkedin, Mail, RotateCw, Twitter } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Crown, Linkedin, Mail, RotateCw, Twitter } from "lucide-react";
 import "./team-card.css";
 
 export interface TeamCardData {
@@ -16,7 +16,8 @@ export interface TeamCardData {
   email: string | null;
 }
 
-export function TeamCard({ member }: { member: TeamCardData }) {
+/** `featured` gives the leader (CEO / founder) a gold-trimmed card. */
+export function TeamCard({ member, featured = false }: { member: TeamCardData; featured?: boolean }) {
   const [flipped, setFlipped] = useState(false);
   const detailsId = useId();
   const frontRef = useRef<HTMLButtonElement>(null);
@@ -36,7 +37,7 @@ export function TeamCard({ member }: { member: TeamCardData }) {
   }
 
   return (
-    <article className="team-flip" data-flipped={flipped} aria-label={member.name}
+    <article className="team-flip" data-flipped={flipped} data-featured={featured || undefined} aria-label={member.name}
       onKeyDown={(event) => {
         if (event.key === "Escape" && flipped) { event.preventDefault(); flip(false); }
       }}>
@@ -49,11 +50,17 @@ export function TeamCard({ member }: { member: TeamCardData }) {
               <Image src={member.photo} alt="" fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover" />
             ) : <span className="team-flip-initials">{initials}</span>}
           </span>
-          <span className="team-flip-badge"><RotateCw size={14} aria-hidden="true" /> Meet the person</span>
           <span className="team-flip-caption">
             <span>
               <span className="block text-xl font-extrabold text-brand-black">{member.name}</span>
-              <span className="mt-1 block text-sm font-semibold text-[#8a6500]">{member.position}</span>
+              {featured ? (
+                <span className="team-flip-title mt-2">
+                  <Crown size={14} aria-hidden="true" />
+                  {member.position}
+                </span>
+              ) : (
+                <span className="mt-1 block text-sm font-semibold text-[#8a6500]">{member.position}</span>
+              )}
             </span>
             <span className="team-flip-arrow"><ArrowUpRight size={21} aria-hidden="true" /></span>
           </span>

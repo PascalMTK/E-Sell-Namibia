@@ -16,6 +16,8 @@ const previewPortraits = [
   "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&h=900&q=85",
 ];
 
+const LEADER_TITLE = /\b(ceo|chief executive|founder|managing director|president)\b/i;
+
 const steps = [
   {
     icon: <PackageSearch size={20} />,
@@ -35,7 +37,9 @@ const steps = [
 ];
 
 export default async function AboutPage() {
-  const team = await getActiveTeamMembers();
+  const members = await getActiveTeamMembers();
+  // The CEO / founder always comes first and gets the featured card.
+  const team = [...members].sort((a, b) => Number(LEADER_TITLE.test(b.position)) - Number(LEADER_TITLE.test(a.position)));
 
   return (
     <>
@@ -98,7 +102,7 @@ export default async function AboutPage() {
             {team.length > 0 ? (
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {team.map((member, index) => (
-                  <TeamCard key={member.id} member={{
+                  <TeamCard key={member.id} featured={index === 0 && LEADER_TITLE.test(member.position)} member={{
                     ...member,
                     photo: member.photo || (process.env.NODE_ENV === "development"
                       ? previewPortraits[index % previewPortraits.length]

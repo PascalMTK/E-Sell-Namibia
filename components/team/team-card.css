@@ -7,7 +7,6 @@
 .team-flip-portrait img { transition: transform 600ms ease; }
 .team-flip-front:hover .team-flip-portrait img { transform: scale(1.045); }
 .team-flip-initials { font-size: 5rem; font-weight: 800; color: #6b4700; letter-spacing: -.06em; }
-.team-flip-badge { position: relative; margin-top: -1rem; display: inline-flex; align-items: center; gap: .5rem; padding: .55rem .85rem; border: 1px solid #eadcb7; border-radius: 99px; background: #fff; color: #26221b; font-size: .75rem; font-weight: 600; }
 .team-flip-caption { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 1.25rem 0 0; width: 100%; }
 .team-flip-arrow { display: flex; flex-shrink: 0; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #fff4d4; color: #8a6500; transition: background 200ms ease, transform 200ms ease; }
 .team-flip-front:hover .team-flip-arrow { background: #f0b735; transform: rotate(45deg); }
@@ -21,3 +20,34 @@
   .team-flip-rotor, .team-flip-portrait img, .team-flip-arrow, .team-flip-social { transition: none; }
   .team-flip-front:hover .team-flip-portrait img { transform: none; }
 }
+
+/* Leader card (CEO / founder): same light card, trimmed in gold */
+.team-flip[data-featured] .team-flip-front {
+  position: relative;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(160deg, #fff6dc, #fffdf6 55%, #fff) padding-box,
+    linear-gradient(135deg, #f4c04e, #d99000 45%, #fbe3a1 70%, #b87a00) border-box;
+  box-shadow: 0 24px 48px -26px #b87a00aa;
+}
+/* Gold band across the top */
+.team-flip[data-featured] .team-flip-front::before {
+  content: ""; position: absolute; inset: 0 0 auto; height: 6px;
+  background: linear-gradient(90deg, #b87a00, #f4c04e, #b87a00);
+}
+/* Soft light sweep behind the portrait */
+.team-flip[data-featured] .team-flip-front::after {
+  content: ""; position: absolute; top: -30%; left: 50%; width: 140%; aspect-ratio: 1; transform: translateX(-50%);
+  background: radial-gradient(circle, #ffe7a3aa, transparent 60%); pointer-events: none; z-index: 0;
+}
+.team-flip[data-featured] .team-flip-front > * { position: relative; z-index: 1; }
+.team-flip[data-featured] .team-flip-portrait {
+  box-shadow: 0 0 0 3px #d99000, 0 0 0 9px #fff, 0 0 0 11px #f0c96a, 0 18px 36px -14px #805b0088;
+}
+.team-flip-title {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .8rem; border-radius: 99px;
+  background: linear-gradient(90deg, #d99000, #f0b735); color: #1a1a1a; font-size: .8125rem; font-weight: 700;
+  box-shadow: 0 6px 14px -8px #b87a00;
+}
+.team-flip[data-featured] .team-flip-arrow { background: #d99000; color: #fff; }
+.team-flip[data-featured] .team-flip-front:hover .team-flip-arrow { background: #b87a00; }
