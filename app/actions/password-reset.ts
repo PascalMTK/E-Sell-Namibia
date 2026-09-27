@@ -6,6 +6,7 @@ import { prisma } from "@/lib/db/prisma";
 import { forgotPasswordSchema, resetPasswordSchema } from "@/lib/validation/auth";
 import { sendPasswordResetEmail } from "@/lib/email/password-reset";
 import type { FormState } from "@/app/actions/auth";
+import { isAdminEmail } from "@/lib/auth/admin-credentials";
 
 const RESET_TOKEN_TTL_MS = 1000 * 60 * 60; // 1 hour
 
@@ -18,7 +19,8 @@ export async function requestPasswordResetAction(_prev: FormState, formData: For
   const user = await prisma.user.findUnique({ where: { email: parsed.data.email } });
 
   // Always respond the same way whether or not the account exists, to avoid leaking which emails are registered.
-  if (user) {
+  // Administrator passwords live in server env and can never be reset from the website.
+  if (user && user.role !== "ADMIN" && !isAdminEmail(user.email)) {
     const token = crypto.randomBytes(32).toString("hex");
     await prisma.passwordResetToken.create({
       data: {
@@ -49,8 +51,11 @@ export async function resetPasswordAction(_prev: FormState, formData: FormData):
     return { fieldErrors };
   }
 
-  const record = await prisma.passwordResetToken.findUnique({ where: { token: parsed.data.token } });
-  if (!record || record.expiresAt < new Date()) {
+  const record = await prisma.passwordResetToken.findUnique({
+    where: { token: parsed.data.token },
+    include: { user: { select: { role: true } } },
+  });
+  if (!record || record.expiresAt < new Date() || record.user.role === "ADMIN") {
     return { error: "This reset link is invalid or has expired. Please request a new one." };
   }
 

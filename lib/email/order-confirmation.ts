@@ -1,4 +1,4 @@
-import { getResendClient, EMAIL_FROM } from "@/lib/email/client";
+import { sendEmail } from "@/lib/email/client";
 import { formatNad } from "@/lib/utils/currency";
 
 interface ConfirmableOrder {
@@ -11,12 +11,6 @@ interface ConfirmableOrder {
 }
 
 export async function sendOrderConfirmationEmail(order: ConfirmableOrder) {
-  const resend = getResendClient();
-  if (!resend) {
-    console.log(`[email] RESEND_API_KEY not set — order confirmation for ${order.customerEmail}: ${order.orderNumber}`);
-    return;
-  }
-
   const itemRows = order.items
     .map(
       (item) => `
@@ -52,14 +46,9 @@ export async function sendOrderConfirmationEmail(order: ConfirmableOrder) {
     </div>
   </div>`;
 
-  try {
-    await resend.emails.send({
-      from: EMAIL_FROM,
-      to: order.customerEmail,
-      subject: `Order confirmation — ${order.orderNumber}`,
-      html,
-    });
-  } catch (error) {
-    console.error("[email] Failed to send order confirmation email:", error);
-  }
+  await sendEmail({
+    to: order.customerEmail,
+    subject: `Order confirmation: ${order.orderNumber}`,
+    html,
+  });
 }

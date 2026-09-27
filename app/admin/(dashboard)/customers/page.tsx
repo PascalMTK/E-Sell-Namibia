@@ -40,7 +40,7 @@ export default async function AdminCustomersPage() {
                 <tr key={customer.id}>
                   <td className="p-3 font-semibold text-brand-black">{customer.name}</td>
                   <td className="p-3 text-secondary-text">{customer.email}</td>
-                  <td className="p-3 text-secondary-text">{customer.phone || "—"}</td>
+                  <td className="p-3 text-secondary-text">{customer.phone || "Not provided"}</td>
                   <td className="p-3 text-secondary-text">{customer._count.sellRequests}</td>
                   <td className="p-3 text-secondary-text">{customer._count.favorites}</td>
                   <td className="p-3 text-secondary-text">{customer.createdAt.toLocaleDateString("en-NA")}</td>

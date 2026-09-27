@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { requireAdmin } from "@/lib/auth/permissions";
 import { prisma } from "@/lib/db/prisma";
 import { productFormSchema, ProductFormValues } from "@/lib/validation/product";
@@ -53,8 +54,10 @@ export async function createProductAction(
   });
 
   if (product.published) {
-    await notifyUsersOfNewProduct(product).catch((error) =>
-      console.error("[email] Failed to notify users of new product:", error),
+    after(() =>
+      notifyUsersOfNewProduct(product).catch((error) =>
+        console.error("[email] Failed to notify users of new product:", error),
+      ),
     );
   }
 
@@ -180,8 +183,10 @@ export async function toggleProductPublishedAction(productId: string, published:
   );
 
   if (isFirstPublish) {
-    await notifyUsersOfNewProduct(product).catch((error) =>
-      console.error("[email] Failed to notify users of new product:", error),
+    after(() =>
+      notifyUsersOfNewProduct(product).catch((error) =>
+        console.error("[email] Failed to notify users of new product:", error),
+      ),
     );
   }
 

@@ -98,7 +98,7 @@ export default async function AdminSellRequestsPage({
                     <p className="text-xs">{req.phone}</p>
                   </td>
                   <td className="p-3 font-bold text-brand-black">
-                    {req.expectedPrice ? formatNad(req.expectedPrice.toString()) : "—"}
+                    {req.expectedPrice ? formatNad(req.expectedPrice.toString()) : "Not provided"}
                   </td>
                   <td className="p-3 text-secondary-text">{req.condition.replace("_", " ")}</td>
                   <td className="p-3 text-secondary-text">{req.location}</td>

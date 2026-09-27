@@ -13,12 +13,12 @@ const steps = [
   {
     icon: <PackageSearch size={20} />,
     title: "Discover",
-    body: "Browse quality new and second-hand products reviewed by the ESell team.",
+    body: "Browse quality new and secondhand products reviewed by the ESell team.",
   },
   {
     icon: <ShieldCheck size={20} />,
     title: "ESell reviews every listing",
-    body: "Nothing reaches the marketplace without ESell checking it first — pictures, pricing and details.",
+    body: "ESell checks the photos, pricing and details before publishing each listing.",
   },
   {
     icon: <Truck size={20} />,
@@ -52,7 +52,7 @@ export default async function AboutPage() {
             <h2 className="mb-2 text-sm font-bold text-brand-black">How selling works</h2>
             <p className="text-sm text-secondary-text">
               Submit a Sell Request with details and photos of your item. Our team reviews it, may contact you
-              for more information, and — if accepted — creates the final marketplace listing.
+              for more information and creates the final marketplace listing once your item is accepted.
             </p>
           </div>
         </div>
@@ -109,7 +109,7 @@ export default async function AboutPage() {
         <Container className="flex flex-col items-center gap-4 text-center">
           <h2 className="text-2xl font-extrabold">Have something to sell?</h2>
           <p className="max-w-md text-sm text-gray-400">
-            Submit your item for ESell to review — our team handles the rest.
+            Submit your item for ESell to review. Our team handles the rest.
           </p>
           <ButtonLink href="/sell">Sell Your Goods</ButtonLink>
         </Container>

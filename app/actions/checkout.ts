@@ -73,7 +73,7 @@ export async function placeOrderAction(input: unknown): Promise<PlaceOrderState>
         include: { items: true },
       });
       await tx.orderStatusHistoryEntry.create({
-        data: { orderId: created.id, status: "PENDING_PAYMENT", note: "Order placed — Cash/EFT" },
+        data: { orderId: created.id, status: "PENDING_PAYMENT", note: "Order placed: Cash/EFT" },
       });
       await applyProductStockDecrement(
         tx,

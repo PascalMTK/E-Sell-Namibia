@@ -3,6 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/db/prisma";
 import { loginSchema } from "@/lib/validation/auth";
+import { getAdminEmail, isAdminEmail, isAdminPassword } from "@/lib/auth/admin-credentials";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   session: { strategy: "jwt" },
@@ -20,8 +21,22 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if (!parsed.success) return null;
         const { email, password } = parsed.data;
 
-        const user = await prisma.user.findUnique({ where: { email } });
-        if (!user) return null;
+        // The administrator is authenticated only against ADMIN_EMAIL / ADMIN_PASSWORD from env.
+        // A database row is kept (with an unusable password hash) so products and activity can reference it.
+        if (isAdminEmail(email)) {
+          if (!isAdminPassword(password)) return null;
+          const adminEmail = getAdminEmail()!;
+          const admin = await prisma.user.upsert({
+            where: { email: adminEmail },
+            update: { role: "ADMIN", passwordHash: "!env-managed" },
+            create: { name: "ESell Admin", email: adminEmail, role: "ADMIN", passwordHash: "!env-managed" },
+          });
+          return { id: admin.id, name: admin.name, email: admin.email, role: admin.role };
+        }
+
+        const user = await prisma.user.findFirst({ where: { email: { equals: email.trim(), mode: "insensitive" } } });
+        // Any other ADMIN row (e.g. an older seeded admin) can no longer sign in with a stored password.
+        if (!user || user.role === "ADMIN") return null;
 
         const valid = await bcrypt.compare(password, user.passwordHash);
         if (!valid) return null;

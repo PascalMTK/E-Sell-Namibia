@@ -25,7 +25,7 @@ export function GalleryDock({ items }: { items: DockItem[] }) {
             key={item.id}
             href={`/products/${item.slug}`}
             className="esn-dock-item"
-            aria-label={`${item.name} — ${formatNad(item.price)}`}
+            aria-label={`${item.name}, ${formatNad(item.price)}`}
             style={{ "--i": i, "--img": `url('${item.image}')` } as React.CSSProperties}
           >
             <span className="esn-dock-caption">

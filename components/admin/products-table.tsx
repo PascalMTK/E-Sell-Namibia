@@ -127,7 +127,7 @@ export function ProductsTable({ products, categories }: { products: ProductRow[]
                       </div>
                       <div>
                         <p className="line-clamp-1 font-semibold text-brand-black">{product.name}</p>
-                        <p className="text-xs text-secondary-text">{product.sku || "—"}</p>
+                        <p className="text-xs text-secondary-text">{product.sku || "Not provided"}</p>
                       </div>
                     </div>
                   </td>

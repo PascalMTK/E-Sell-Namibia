@@ -12,7 +12,8 @@ export const dynamic = "force-dynamic";
 
 export default async function ContactPage() {
   const settings = await getSiteSettings();
-  const hasAnyDetail = settings.whatsappNumber || settings.phoneNumber || settings.email || settings.address;
+  const address = settings.address?.trim() || "Bach Street 8, Windhoek, Khomas, Namibia";
+  const hasAnyDetail = settings.whatsappNumber || settings.phoneNumber || settings.email || address;
 
   return (
     <>
@@ -64,12 +65,12 @@ export default async function ContactPage() {
               </div>
             </a>
           )}
-          {settings.address && (
+          {address && (
             <div className="flex items-center gap-3 rounded-xl border border-gray-200 bg-off-white p-4">
               <MapPin size={18} className="text-brand-yellow" />
               <div>
                 <p className="text-xs text-secondary-text">Location</p>
-                <p className="text-sm font-bold text-brand-black">{settings.address}</p>
+                <p className="text-sm font-bold text-brand-black">{address}</p>
               </div>
             </div>
           )}
@@ -92,9 +93,9 @@ export default async function ContactPage() {
         </div>
       </div>
 
-      {settings.address && (
+      {address && (
         <div className="mt-10">
-          <LocationMap address={settings.address} />
+          <LocationMap address={address} />
         </div>
       )}
       </Container>

@@ -82,7 +82,7 @@ export default async function AdminOrderDetailPage({ params }: { params: Promise
               <li key={entry.id} className="flex items-center justify-between border-b border-gray-100 pb-2 last:border-0">
                 <span className="font-semibold text-brand-black">
                   {ORDER_STATUSES.find((s) => s.value === entry.status)?.label ?? entry.status}
-                  {entry.note ? ` — ${entry.note}` : ""}
+                  {entry.note ? ` ${entry.note}` : ""}
                 </span>
                 <span>{entry.createdAt.toLocaleString("en-NA")}</span>
               </li>

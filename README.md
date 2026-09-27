@@ -28,7 +28,7 @@ A static HTML/CSS/JS design preview of the public site lives in [`preview/`](./p
    - `DATABASE_URL` — a PostgreSQL connection string
    - `AUTH_SECRET` — generate with `npx auth secret`
    - `BLOB_READ_WRITE_TOKEN` — from a Vercel Blob store (needed for image uploads)
-   - `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD` — your own local admin credentials (password at least 12 characters) before running `db:seed`
+   - `ADMIN_EMAIL` and `ADMIN_PASSWORD` — the only administrator login (password at least 12 characters). It is checked straight from env at `/admin/login`, never stored in the database, and cannot be reset from the website (forgot-password and profile password changes are refused for admins). Change it by editing `.env` and restarting the server.
    - `SEED_CUSTOMER_EMAIL` and `SEED_CUSTOMER_PASSWORD` — optional demo customer credentials
    - `NEXT_PUBLIC_ESELL_WHATSAPP_NUMBER` / `NEXT_PUBLIC_ESELL_PHONE_NUMBER` / `NEXT_PUBLIC_ESELL_EMAIL` — optional seed defaults for the site's contact settings (can also be set later from `/admin/settings`)
 3. **Set up the database**
@@ -73,20 +73,20 @@ See `app/actions/sell-requests.ts` (customer submission) and `app/actions/admin/
 - `npm run lint` / `npm run typecheck`
 - `npm run db:push`, `db:migrate`, `db:seed`, `db:generate`
 
-## New product email alerts
+## Email (SMTP)
 
-When an admin publishes a product for the first time (creating it as published, or toggling a draft to published), every customer with `receiveProductAlerts` enabled gets an email with the product photo, name, price and a link. Customers can opt out from `/account/profile` or via the unsubscribe link in the email footer (`/unsubscribe?token=...`).
+All email goes out over SMTP with [nodemailer](https://nodemailer.com) (`lib/email/client.ts`):
 
-This uses [Resend](https://resend.com):
+- **Sign-up verification (OTP)** — registering is a two-step flow. The form emails a 6-digit code; the account is only created once the code is entered. Codes expire after 10 minutes, allow 5 attempts and can be resent every 60 seconds. Pending sign-ups live in the `PendingRegistration` table.
+- **New product alerts** — when an admin publishes a product for the first time (creating it as published, or toggling a draft to published), every customer with `receiveProductAlerts` enabled gets an email with the photo, name, price and a link. Sending runs after the admin's response, so saving a product is never slowed down. Customers can opt out from `/account/profile` or via the unsubscribe link in the email (`/unsubscribe?token=...`).
+- Password reset links and order confirmations.
 
-1. Sign up (free tier) and create an API key.
-2. Set `RESEND_API_KEY` in `.env`.
-3. For real deliverability, verify a sending domain in Resend and set `EMAIL_FROM` to an address on it — otherwise the default `onboarding@resend.dev` sandbox sender works for testing.
+Setup: fill `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and `EMAIL_FROM` in `.env` (see `.env.example`; for Gmail use `smtp.gmail.com`, port 465 and an App Password).
 
-Without `RESEND_API_KEY` set, sends are skipped and logged to the console instead — nothing breaks.
+Without SMTP configured, emails are printed to the server console instead — including sign-up codes, so registration still works locally. In production, registration refuses to continue if the code can't be sent.
 
 ## Notes / things to wire up before production
 
-- **Transactional email** uses Resend for both new-product alerts and password reset links (see above and `.env.example`). Without an API key, both just log to the console instead of sending.
+- **Email** needs SMTP credentials (see above and `.env.example`). Without them, emails are only logged to the console.
 - **Rate limiting** for auth and upload routes is not implemented; add it at the edge (e.g. Vercel Firewall / Upstash) before production traffic.
 - Contact details (WhatsApp/phone/email/address) are blank until an admin fills them in at `/admin/settings` — the public "Contact E-Sell" buttons stay disabled/hidden until then, by design (no placeholder numbers are shipped).

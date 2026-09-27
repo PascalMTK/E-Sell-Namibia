@@ -42,7 +42,7 @@ export function DpoReturnStatus({ orderId }: { orderId: string }) {
         <CheckCircle2 size={40} className="text-green-600" />
         <div>
           <h1 className="text-xl font-extrabold text-brand-black">Payment received</h1>
-          <p className="mt-1 text-sm text-secondary-text">Thank you — your order has been confirmed.</p>
+          <p className="mt-1 text-sm text-secondary-text">Thank you. Your order has been confirmed.</p>
         </div>
         <ButtonLink href={`/account/orders/${orderId}`}>View Order</ButtonLink>
       </div>

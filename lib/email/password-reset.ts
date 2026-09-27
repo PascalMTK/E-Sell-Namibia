@@ -1,12 +1,6 @@
-import { getResendClient, EMAIL_FROM } from "@/lib/email/client";
+import { sendEmail } from "@/lib/email/client";
 
 export async function sendPasswordResetEmail(email: string, resetLink: string) {
-  const resend = getResendClient();
-  if (!resend) {
-    console.log(`[email] RESEND_API_KEY not set — password reset link for ${email}: ${resetLink}`);
-    return;
-  }
-
   const html = `
   <div style="font-family:Arial,Helvetica,sans-serif;background:#f8f9fa;padding:24px;">
     <div style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e5e7eb;">
@@ -26,14 +20,10 @@ export async function sendPasswordResetEmail(email: string, resetLink: string) {
     </div>
   </div>`;
 
-  try {
-    await resend.emails.send({
-      from: EMAIL_FROM,
-      to: email,
-      subject: "Reset your ESell Namibia password",
-      html,
-    });
-  } catch (error) {
-    console.error("[email] Failed to send password reset email:", error);
-  }
+  await sendEmail({
+    to: email,
+    subject: "Reset your ESell Namibia password",
+    html,
+    text: `Reset your ESell Namibia password: ${resetLink}`,
+  });
 }

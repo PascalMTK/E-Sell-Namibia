@@ -64,6 +64,9 @@ export async function changePasswordAction(_prev: FormState, formData: FormData)
   }
 
   const dbUser = await prisma.user.findUniqueOrThrow({ where: { id: user.id } });
+  if (dbUser.role === "ADMIN") {
+    return { error: "The administrator password is managed on the server and can't be changed here." };
+  }
   const valid = await bcrypt.compare(parsed.data.currentPassword, dbUser.passwordHash);
   if (!valid) return { error: "Current password is incorrect." };
 

@@ -9,21 +9,21 @@ function slug(value: string) {
 }
 
 async function main() {
-  const adminEmail = process.env.SEED_ADMIN_EMAIL;
-  const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+  const adminEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase();
+  const adminPassword = process.env.ADMIN_PASSWORD;
   if (!adminEmail || !adminPassword || adminPassword.length < 12) {
-    throw new Error("Set SEED_ADMIN_EMAIL and a SEED_ADMIN_PASSWORD of at least 12 characters before seeding.");
+    throw new Error("Set ADMIN_EMAIL and an ADMIN_PASSWORD of at least 12 characters before seeding.");
   }
   // --- Admin user ---
-  const adminPasswordHash = await bcrypt.hash(adminPassword, 10);
+  // The admin password is checked against ADMIN_PASSWORD at login and is never stored.
   const admin = await prisma.user.upsert({
     where: { email: adminEmail },
-    update: {},
+    update: { role: "ADMIN", passwordHash: "!env-managed" },
     create: {
       name: "ESell Admin",
       email: adminEmail,
       phone: null,
-      passwordHash: adminPasswordHash,
+      passwordHash: "!env-managed",
       role: "ADMIN",
     },
   });
@@ -118,12 +118,12 @@ async function main() {
       newArrival: true,
     },
     {
-      name: "L-Shaped Sofa",
+      name: "Corner Sofa",
       category: "Furniture",
       price: 7500,
       condition: "GOOD" as const,
       location: "Windhoek",
-      description: "Comfortable L-shaped sofa, fabric upholstery, no tears or stains.",
+      description: "Comfortable corner sofa, fabric upholstery, no tears or stains.",
       image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
     },
     {
@@ -152,7 +152,7 @@ async function main() {
       price: 1800,
       condition: "LIKE_NEW" as const,
       location: "Windhoek",
-      description: "Modern accent lounge chair, barely used, smoke-free home.",
+      description: "Modern accent lounge chair, barely used, home without smoking.",
       image: "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=80",
       newArrival: true,
     },

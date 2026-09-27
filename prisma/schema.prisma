@@ -117,6 +117,20 @@ model PasswordResetToken {
   @@index([userId])
 }
 
+/// A sign-up waiting for its emailed 6-digit code. The account is only created once the code is confirmed.
+model PendingRegistration {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  phone        String?
+  passwordHash String
+  codeHash     String
+  attempts     Int      @default(0)
+  expiresAt    DateTime
+  lastSentAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
+}
+
 // ---------------------------------------------------------------------------
 // Catalog
 // ---------------------------------------------------------------------------

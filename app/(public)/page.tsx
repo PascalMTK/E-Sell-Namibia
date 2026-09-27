@@ -73,7 +73,7 @@ export default async function HomePage() {
               Buying & Selling made easier <span className="text-brand-yellow">for everyone.</span>
             </h1>
             <p className="mt-6 max-w-lg text-base leading-7 text-[#514c3f]">
-              Discover quality new and second-hand products across Namibia, or send us the goods you want to
+              Discover quality new and secondhand products across Namibia, or send us the goods you want to
               sell.
             </p>
 
@@ -147,7 +147,7 @@ export default async function HomePage() {
               </p>
               <h2 className="text-2xl font-extrabold text-white sm:text-3xl">Hover to explore</h2>
               <p className="mx-auto mt-2 max-w-md text-sm text-gray-400">
-                Move your cursor across the dock to preview featured finds — or tap and scroll on mobile.
+                Move your cursor across the dock to preview featured finds, or tap and scroll on mobile.
               </p>
             </Reveal>
             <Reveal>

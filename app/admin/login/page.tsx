@@ -13,7 +13,7 @@ export default function AdminLoginPage() {
             <Image src="/logo.png" alt="ESell" width={474} height={193} className="h-8 w-auto" />
           </span>
           <h1 className="text-xl font-extrabold uppercase tracking-widest">Namibia Admin</h1>
-          <p className="mt-1 text-xs text-gray-400">Moderation dashboard — authorized administrators only.</p>
+          <p className="mt-1 text-xs text-gray-400">Moderation dashboard. Authorized administrators only.</p>
         </div>
         <div className="rounded-2xl border border-brand-border bg-brand-charcoal p-6 shadow-2xl">
           <AdminLoginForm />

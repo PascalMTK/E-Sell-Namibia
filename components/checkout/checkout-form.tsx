@@ -79,7 +79,7 @@ export function CheckoutForm({ dpoAvailable }: { dpoAvailable: boolean }) {
             <Banknote size={16} className="text-secondary-text" />
             <div>
               <p className="text-sm font-bold text-brand-black">Cash / EFT</p>
-              <p className="text-xs text-secondary-text">Place your order now — ESell will contact you to confirm payment.</p>
+              <p className="text-xs text-secondary-text">Place your order now. ESell will contact you to confirm payment.</p>
             </div>
           </label>
           <label
@@ -97,7 +97,7 @@ export function CheckoutForm({ dpoAvailable }: { dpoAvailable: boolean }) {
             <div>
               <p className="text-sm font-bold text-brand-black">Pay by Card</p>
               <p className="text-xs text-secondary-text">
-                {dpoAvailable ? "Pay securely via DPO." : "Card payments are temporarily unavailable — please choose Cash/EFT."}
+                {dpoAvailable ? "Pay securely via DPO." : "Card payments are temporarily unavailable. Please choose Cash/EFT."}
               </p>
             </div>
           </label>

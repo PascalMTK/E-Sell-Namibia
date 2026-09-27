@@ -72,7 +72,7 @@ export function Footer() {
               <span className="text-lg font-extrabold uppercase tracking-widest">Namibia</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-gray-400">
-              Buying & Selling made easier for everyone. Buy new and second-hand goods, or sell your unwanted
+              Buying & Selling made easier for everyone. Buy new and secondhand goods, or sell your unwanted
               items through ESell Namibia.
             </p>
             <p className="mt-3 text-xs font-semibold text-gray-500">Windhoek, Namibia · Nationwide Delivery</p>

@@ -56,7 +56,7 @@ export default async function AdminSellRequestDetailPage({ params }: { params: P
           <dl className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
             <div>
               <dt className="text-xs text-secondary-text">Category</dt>
-              <dd className="font-semibold text-brand-black">{sellRequest.category?.name ?? "—"}</dd>
+              <dd className="font-semibold text-brand-black">{sellRequest.category?.name ?? "Not provided"}</dd>
             </div>
             <div>
               <dt className="text-xs text-secondary-text">Condition</dt>
@@ -66,11 +66,11 @@ export default async function AdminSellRequestDetailPage({ params }: { params: P
             </div>
             <div>
               <dt className="text-xs text-secondary-text">Brand</dt>
-              <dd className="font-semibold text-brand-black">{sellRequest.brand || "—"}</dd>
+              <dd className="font-semibold text-brand-black">{sellRequest.brand || "Not provided"}</dd>
             </div>
             <div>
               <dt className="text-xs text-secondary-text">Model</dt>
-              <dd className="font-semibold text-brand-black">{sellRequest.model || "—"}</dd>
+              <dd className="font-semibold text-brand-black">{sellRequest.model || "Not provided"}</dd>
             </div>
             <div>
               <dt className="text-xs text-secondary-text">Expected Price</dt>
@@ -148,7 +148,7 @@ export default async function AdminSellRequestDetailPage({ params }: { params: P
           ) : (
             <>
               <p className="mb-3 text-xs text-secondary-text">
-                Opens the product creation form pre-filled with this request&rsquo;s details.
+                Opens the product creation form filled in with this request&rsquo;s details.
               </p>
               <ButtonLink href={`/admin/sell-requests/${sellRequest.id}/convert`} className="w-full">
                 Convert to Product

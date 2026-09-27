@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | ESell Namibia",
   },
   description:
-    "ESell Namibia is Namibia's buying and selling platform. Discover quality new and second-hand products, or submit your item for ESell to review and list.",
+    "ESell Namibia is Namibia's buying and selling platform. Discover quality new and secondhand products, or submit your item for ESell to review and list.",
   icons: { icon: "/logo-mark.png" },
   openGraph: {
     title: "ESell Namibia",
